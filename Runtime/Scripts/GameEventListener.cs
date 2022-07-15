@@ -21,7 +21,7 @@ namespace Subsets.Message2
             Event.UnregisterListener(this);
         }
 
-        public void OnEventRaised()
+        public virtual void OnEventRaised()
         {
             Response.Invoke();
         }

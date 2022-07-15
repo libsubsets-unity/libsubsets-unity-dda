@@ -14,7 +14,6 @@ namespace Subsets.Message2
             for(int i = eventListeners.Count -1; i >= 0; i--)
                 eventListeners[i].OnEventRaised();
         }
-
         public void RegisterListener(GameEventListener listener)
         {
             if (!eventListeners.Contains(listener))
