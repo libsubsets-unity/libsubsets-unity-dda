@@ -5,41 +5,46 @@ using UnityEngine.Events;
 
 namespace Subsets.Message2 
 {
-    public enum IntegerCompare
+    public enum StringCompare
     {
         Equal,
+        Contains,
         IsNot
     }
     
-    [Serializable]
-    public class IntegerCondition
+    public class StringCondition
     {
-        public IntegerCompare Compare;
-        public int Value;
+        public StringCompare Compare;
+        public string Value;
     }
-    
-    public class IntegerEventListener : GameEventListener
+    public class StringEventListener : GameEventListener
     {
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable]
-        public List<IntegerCondition> Conditions;
+        public List<StringCondition> Conditions;
+        
         protected  override bool CheckCompareCondition()
         {
-            IntegerEvent e = Event as IntegerEvent;
+            StringEvent e = Event as StringEvent;
             if (e)
             {
                 ConditionCompareResult result = new ConditionCompareResult();
-                foreach (IntegerCondition condition in Conditions)
+                foreach (StringCondition condition in Conditions)
                 {
-                    if (condition.Compare == IntegerCompare.Equal)
+                    if (condition.Compare == StringCompare.Equal)
                     {
                         result.Add(e.Variable == condition.Value);
                     }
-                    else if (condition.Compare == IntegerCompare.IsNot)
+                    else if (condition.Compare == StringCompare.Contains)
+                    {
+                        result.Add(e.Variable.Contains(condition.Value));
+                    }
+                    else if (condition.Compare == StringCompare.IsNot)
                     {
                         result.Add(e.Variable != condition.Value);
-                    }
+                    }    
                 }
+
                 return result.CheckConditionOperator(ConditionOperator);
             }
             throw new Exception("Event type is wrong:" + Event.ToString());

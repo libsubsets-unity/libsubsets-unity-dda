@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Subsets.Message2
 {
     [CustomEditor(typeof(GameEvent), editorForChildClasses: true)]
-    public class EventEditor : Editor
+    public class GameEventEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -14,7 +14,9 @@ namespace Subsets.Message2
 
             GameEvent e = target as GameEvent;
             if (GUILayout.Button("Raise"))
+            {
                 e.Raise();
+            }
         }
     }
 }

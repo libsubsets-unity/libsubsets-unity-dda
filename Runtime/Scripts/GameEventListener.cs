@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Subsets.Message2 
@@ -10,7 +11,7 @@ namespace Subsets.Message2
 
         [Tooltip("Response to invoke when Event is raised.")]
         public UnityEvent Response;
-
+        
         private void OnEnable()
         {
             Event.RegisterListener(this);
@@ -23,7 +24,15 @@ namespace Subsets.Message2
 
         public virtual void OnEventRaised()
         {
-            Response.Invoke();
+            if (CheckCompareCondition())
+            {
+                Response.Invoke();
+            }
+        }
+
+        protected virtual bool CheckCompareCondition()
+        {
+            return true;
         }
     }
 }
