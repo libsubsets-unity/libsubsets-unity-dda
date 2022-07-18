@@ -27,17 +27,11 @@ namespace Subsets.Message2
             }
             if (conditionOperator == ResponseConditionOperator.And)
             {
-                if (matchCount == compareResults.Count || compareResults.Count == 0)
-                {
-                    return true;
-                }    
+                return matchCount == compareResults.Count || compareResults.Count == 0;
             }
             else if (conditionOperator == ResponseConditionOperator.Or)
             {
-                if (matchCount > 0 || compareResults.Count == 0)
-                {
-                    return true;
-                }
+                return matchCount > 0 || compareResults.Count == 0;
             }
             throw new Exception("ResponseConditionOperator is wrong: " + conditionOperator.ToString());
         }
