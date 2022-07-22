@@ -8,7 +8,6 @@ namespace Subsets.Message2
     {
         protected readonly List<GameEventListener> eventListeners = 
             new List<GameEventListener>();
-
         public void Raise()
         {
             for(int i = eventListeners.Count -1; i >= 0; i--)
