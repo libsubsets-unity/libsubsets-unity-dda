@@ -11,7 +11,8 @@ namespace Subsets.Message2
         Contains,
         IsNot
     }
-    
+   
+    [Serializable]
     public class StringCondition
     {
         public StringCompare Compare;
@@ -20,8 +21,7 @@ namespace Subsets.Message2
     public class StringEventListener : GameEventListener
     {
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable]
-        public List<StringCondition> Conditions;
+        [NonReorderable] public List<StringCondition> Conditions = new List<StringCondition>();
         
         protected  override bool CheckCompareCondition()
         {

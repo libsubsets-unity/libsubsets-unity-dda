@@ -24,14 +24,12 @@ namespace Subsets.Message2.Editor
             serializedObject.Update();
             Vector2EventListener e = target as Vector2EventListener;
             EditorGUILayout.PropertyField(eventProperty, new GUIContent("Event") );
-            /*
             EditorGUILayout.PropertyField(conditionsProperty, new GUIContent("Conditions") );
             if (conditionsProperty.arraySize > 1)
             {
                 e.ConditionOperator = (ResponseConditionOperator)EditorGUILayout.EnumPopup("Condition Operator", e.ConditionOperator);
             }
             EditorGUILayout.PropertyField(responseProperty, new GUIContent("Response") );    
-            */
             serializedObject.ApplyModifiedProperties();
         }
     }
