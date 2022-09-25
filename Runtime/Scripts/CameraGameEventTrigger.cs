@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Subsets.Message2
 {
-    public class GameEventTrigger : MonoBehaviour
+    public class CameraGameEventTrigger : MonoBehaviour
     {
-        public GameEvent RaiseEvent;
         public Camera Camera;
+        public UnityEvent OnScreenClick;
 
         void Update()
         {
@@ -18,9 +19,9 @@ namespace Subsets.Message2
                 {
                     Transform objectHit = hit.transform;
                     Debug.Log("GameEventTrigger: hit name is " + objectHit.name);
-                    if (RaiseEvent)
+                    if (OnScreenClick != null)
                     {
-                        RaiseEvent.Raise();
+                        OnScreenClick.Invoke();
                     }
                 }
             }
