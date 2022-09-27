@@ -18,7 +18,7 @@ namespace Subsets.Message2
         public StringCompare Compare;
         public string Value;
     }
-    public class StringEventListener : GameEventListener
+    public class StringEventListener : BaseEventListener<string>
     {
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable] public List<StringCondition> Conditions = new List<StringCondition>();

@@ -18,7 +18,7 @@ namespace Subsets.Message2
         public Vector2Compare Compare;
         public Vector2 Value;
     }
-    public class Vector2EventListener : GameEventListener
+    public class Vector2EventListener : BaseEventListener<Vector2>
     {
         static public float CompareEpsilon = 0.01f;
     

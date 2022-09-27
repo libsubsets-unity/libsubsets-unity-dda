@@ -17,7 +17,7 @@ namespace Subsets.Message2
         public BoolCompare Compare;
     }
  
-    public class BoolEventListener : GameEventListener
+    public class BoolEventListener : BaseEventListener<bool>
     {
         public BoolCondition Condition;
         protected  override bool CheckCompareCondition()

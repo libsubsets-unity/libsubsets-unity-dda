@@ -18,7 +18,7 @@ namespace Subsets.Message2
         public int Value;
     }
     
-    public class IntegerEventListener : GameEventListener
+    public class IntegerEventListener : BaseEventListener<int>
     {
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable]

@@ -15,7 +15,7 @@ namespace Subsets.Message2
             GameEvent e = target as GameEvent;
             if (GUILayout.Button("Raise"))
             {
-                e.Raise();
+                e.Raise(new Void());
             }
         }
     }
