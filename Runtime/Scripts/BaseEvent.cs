@@ -1,58 +1,56 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Subsets.Message2 
+namespace Subsets.Message2
 {
+    
     [CreateAssetMenu]
-    public class BaseEvent<T> : ScriptableObject
+    public class BaseEvent<T> : ScriptableObject, IRuntimeInitialize
     {
-        protected readonly List<BaseEventListener<T>> eventListeners = 
-            new List<BaseEventListener<T>>();
-        protected readonly List<UnityAction<T>> eventActions = 
-            new List<UnityAction<T>>();
+        public int ListenerCount = 0;
 
         public T Variable;
+
+        private readonly List<UnityAction<T>> eventListener = 
+            new List<UnityAction<T>>();
+        public void Init()
+        {
+            eventListener.Clear();
+            ListenerCount = 0;
+        }
                
         public void Raise(T value)
         {
             Variable = value;
-            
-            for(int i = eventListeners.Count -1; i >= 0; i--)
-                eventListeners[i].OnEventRaised(value);
-                   
-            for(int i = eventActions.Count -1; i >= 0; i--)
-                eventActions[i].Invoke(value);
+  
+            for(int i = eventListener.Count -1; i >= 0; i--)
+                eventListener[i].Invoke(value);
         }
 
         public void Raise()
         {
             Raise(Variable);
         }
-        
-        public void RegisterListener(BaseEventListener<T> listener)
-        {
-            if (!eventListeners.Contains(listener))
-                eventListeners.Add(listener);
-        }
                
         public void RegisterListener(UnityAction<T> action)
         {
-            eventActions.Add(action);
+            if (!eventListener.Contains(action))
+                eventListener.Add(action);
+            ListenerCount = eventListener.Count();
         }
        
-        public void UnregisterListener(BaseEventListener<T> listener)
-        {
-            if (eventListeners.Contains(listener))
-                eventListeners.Remove(listener);
-        }
                
         public void UnregisterListener(UnityAction<T> action)
         {
-            if (eventActions.Contains(action))
-                eventActions.Remove(action);
+            if (eventListener.Contains(action))
+            {
+                eventListener.Remove(action);
+            }
+            ListenerCount = eventListener.Count();
         } 
     }
 }

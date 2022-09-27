@@ -16,7 +16,7 @@ namespace Subsets.Message2
         {
             if (Event)
             {
-                Event.RegisterListener(this);
+                Event.RegisterListener(OnEventRaised);
             }
         }
         
@@ -24,7 +24,7 @@ namespace Subsets.Message2
         {
             if (Event)
             {
-                Event.UnregisterListener(this);
+                Event.UnregisterListener(OnEventRaised);
             }
         }
         
