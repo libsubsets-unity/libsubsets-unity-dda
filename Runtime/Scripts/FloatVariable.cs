@@ -11,7 +11,7 @@ namespace PlayGem.JawRed.Core.Variables
         public string DeveloperDescription = "";
 #endif
         
-        [System.NonSerialized] 
+        [SerializeField]
         public float Value;
         [SerializeField]
         public float InitValue;
