@@ -15,30 +15,30 @@ namespace PlayGem.JawRed.Core.Variables
                 BaseVariable[] variables = Resources.FindObjectsOfTypeAll<BaseVariable>();
                 foreach (BaseVariable variable in variables)
                 {
-                    Debug.Log("BaseVariable::Reset: Init");
+                    Debug.Log("BaseVariable::Reset: Init. name is " + variable.name);
                     variable.Init();
                 }    
             }
             
         }
 
-        protected BaseVariable()
-        {
-            Debug.Log("BaseVariable::BaseVariable");
-        }
-
         protected abstract void Init();
         public void OnBeforeSerialize()
         {
-            
+            Debug.Log("BaseVariable::OnBeforeDeserialize: name is " + name);
+        }
+        
+        private void OnEnable()
+        {
+            Debug.Log("BaseVariable::OnEnable: name is " + name);
         }
 
         public void OnAfterDeserialize()
         {
-            Debug.Log("BaseVariable::OnAfterDeserialize");
+            Debug.Log("BaseVariable::OnAfterDeserialize: name is " + name);
             if (!Application.isEditor)
             {
-                Debug.Log("BaseVariable::OnAfterDeserialize: Init");
+                Debug.Log("BaseVariable::OnAfterDeserialize: Init. name is + " + name);
                 Init();
             }
         }

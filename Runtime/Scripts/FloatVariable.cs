@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
@@ -46,17 +47,17 @@ namespace PlayGem.JawRed.Core.Variables
 
         public void LoadInitValue()
         {
-            Debug.Log("GameTestVariable::LoadInitValue");
+            Debug.Log("FloatVariable::LoadInitValue");
             _value = InitValue;
         }
                 
         public void OnBeforeSerialize()
         {
         }
-                
+
         public void OnAfterDeserialize()
         {
-            Debug.Log("GameTestVariable::OnAfterDeserialize");
+            Debug.Log("FloatVariable::OnAfterDeserialize");
             this.LoadInitValue();
         }
     }

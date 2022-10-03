@@ -29,12 +29,15 @@ namespace PlayGem.JawRed.Core.Variables
 
         [SerializeField]
         private bool _value;
+
+        public bool InitValue;
         
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected override void Init()
         {
             PropertyChanged = null;
+            Value = InitValue;
         }
 
         protected void OnPropertyChanged(string name)
