@@ -11,47 +11,34 @@ namespace PlayGem.JawRed.Core.Variables
         [Multiline]
         public string DeveloperDescription = "";
 #endif
-        public int Value;
+        public int Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+                OnPropertyChanged("Value");
+            }
+        }
 
         [SerializeField]
-        private float _value;
+        private int _value;
+        public int InitValue;
 
-        new public void OnAfterDeserialize()
-        {
-            _value = Value;
-        }
-        
         public event PropertyChangedEventHandler PropertyChanged;
                         
         protected override void Init()
         {
             PropertyChanged = null;
+            Value = InitValue;
         }
                         
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-                
-        /*
-        [SerializeField]
-        public float InitValue;
-        
-        public void LoadInitValue()
-        {
-            Debug.Log("FloatVariable::LoadInitValue");
-            _value = InitValue;
-        }
-                        
-        public void OnBeforeSerialize()
-        {
-        }
-        
-        public void OnAfterDeserialize()
-        {
-            Debug.Log("FloatVariable::OnAfterDeserialize");
-            this.LoadInitValue();
-        }
-        */
     }
 }

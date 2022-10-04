@@ -24,7 +24,6 @@ namespace PlayGem.JawRed.Core.Variables
                 _value = value;
                 OnPropertyChanged("Value");
             }
-            
         }
 
         [SerializeField]
