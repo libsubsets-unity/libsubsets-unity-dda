@@ -25,7 +25,7 @@ namespace PlayGem.JawRed.Core.Variables
         protected abstract void Init();
         public void OnBeforeSerialize()
         {
-            Debug.Log("BaseVariable::OnBeforeDeserialize: name is " + name);
+            Debug.Log("BaseVariable::OnBeforeDeserialize");
         }
         
         private void OnEnable()
@@ -35,10 +35,10 @@ namespace PlayGem.JawRed.Core.Variables
 
         public void OnAfterDeserialize()
         {
-            Debug.Log("BaseVariable::OnAfterDeserialize: name is " + name);
+            Debug.Log("BaseVariable::OnAfterDeserialize:" );
             if (!Application.isEditor)
             {
-                Debug.Log("BaseVariable::OnAfterDeserialize: Init. name is + " + name);
+                Debug.Log("BaseVariable::OnAfterDeserialize: Init");
                 Init();
             }
         }

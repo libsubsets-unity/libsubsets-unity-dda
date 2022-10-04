@@ -27,8 +27,14 @@ namespace Subsets.Message2
         {
             Variable = value;
   
+            /*
             for(int i = eventListener.Count -1; i >= 0; i--)
                 eventListener[i].Invoke(value);
+            */
+            for (int i = 0; i < eventListener.Count; ++i)
+            {
+                eventListener[i].Invoke(value);
+            }
         }
 
         public void Raise()

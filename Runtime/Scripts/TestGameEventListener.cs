@@ -15,7 +15,7 @@ namespace Subsets.Message2
 
         public void Awake()
         {
-            EventTrigger trigger = GetComponent<EventTrigger>();
+            UnityEngine.EventSystems.EventTrigger trigger = GetComponent<UnityEngine.EventSystems.EventTrigger>();
         }
 
         public void Raise()

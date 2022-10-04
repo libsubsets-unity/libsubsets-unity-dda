@@ -20,29 +20,29 @@ namespace Subsets.Message2.Editor
         public Type ComponentType { get; set; }
     }
 
-    [CustomEditor(typeof(GameEventRaiser))]
-    public class GameEventRaiseEditor : UnityEditor.Editor
+    [CustomEditor(typeof(EventTrigger))]
+    public class EventTriggerEditor : UnityEditor.Editor
     {
-        private GameEventRaiser raiser;
+        private EventTrigger trigger;
         
         private void OnEnable()
         {
-            raiser = (GameEventRaiser)target;
+            trigger = (EventTrigger)target;
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             
-            BindableEvent[] events = GetBindableEvents(raiser.gameObject);
+            BindableEvent[] events = GetBindableEvents(trigger.gameObject);
             var eventNames = events.Select(BindableEventToString).ToArray();
-            var selectedIndex = Array.IndexOf(eventNames, raiser.ViewEventName);
+            var selectedIndex = Array.IndexOf(eventNames, trigger.ViewEventName);
             var content = events.Select(evt => new GUIContent(evt.ComponentType.Name + "." + evt.Name)).ToArray();
             var newSelectedIndex = EditorGUILayout.Popup(
                 new GUIContent("View event", "Event on the view to bind to."),
                 selectedIndex,
                 content);
-            raiser.ViewEventName = eventNames[newSelectedIndex];
+            trigger.ViewEventName = eventNames[newSelectedIndex];
 
             serializedObject.ApplyModifiedProperties();
         }

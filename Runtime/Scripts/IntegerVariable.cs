@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace PlayGem.JawRed.Core.Variables
 {
     [CreateAssetMenu]
-    public class IntegerVariable : ScriptableObject
+    public class IntegerVariable : BaseVariable, INotifyPropertyChanged
     {
 #if UNITY_EDITOR
         [Multiline]
@@ -12,12 +13,45 @@ namespace PlayGem.JawRed.Core.Variables
 #endif
         public int Value;
 
-        public void OnEnable()
-        {
-        }
+        [SerializeField]
+        private float _value;
 
-        public void OnValidate()
+        new public void OnAfterDeserialize()
+        {
+            _value = Value;
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+                        
+        protected override void Init()
+        {
+            PropertyChanged = null;
+        }
+                        
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+                
+        /*
+        [SerializeField]
+        public float InitValue;
+        
+        public void LoadInitValue()
+        {
+            Debug.Log("FloatVariable::LoadInitValue");
+            _value = InitValue;
+        }
+                        
+        public void OnBeforeSerialize()
         {
         }
+        
+        public void OnAfterDeserialize()
+        {
+            Debug.Log("FloatVariable::OnAfterDeserialize");
+            this.LoadInitValue();
+        }
+        */
     }
 }
