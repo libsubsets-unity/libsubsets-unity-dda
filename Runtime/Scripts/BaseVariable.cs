@@ -1,11 +1,13 @@
 ﻿using System;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace PlayGem.JawRed.Core.Variables
 {
-    public abstract class BaseVariable : ScriptableObject, ISerializationCallbackReceiver
+    public  class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged
     {
+        /*
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void Reset()
         {
@@ -19,10 +21,45 @@ namespace PlayGem.JawRed.Core.Variables
                     variable.Init();
                 }    
             }
-            
+        }
+        */
+        
+#if UNITY_EDITOR
+        [Multiline]
+        public string DeveloperDescription = "";
+#endif
+        public T Value
+        {
+            get
+            {
+                return value;
+            }
+            set
+            {
+                this.value = value;
+                OnPropertyChanged("Value");
+            }
+                    
+        }
+                
+        [SerializeField]
+        private T value;
+        
+        public T InitValue;
+                        
+                
+        protected virtual void Init()
+        {
+            Value = InitValue;
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected abstract void Init();
         public void OnBeforeSerialize()
         {
             Debug.Log("BaseVariable::OnBeforeDeserialize");
@@ -30,17 +67,13 @@ namespace PlayGem.JawRed.Core.Variables
         
         private void OnEnable()
         {
+            Init();
             Debug.Log("BaseVariable::OnEnable: name is " + name);
         }
 
         public void OnAfterDeserialize()
         {
             Debug.Log("BaseVariable::OnAfterDeserialize:" );
-            if (!Application.isEditor)
-            {
-                Debug.Log("BaseVariable::OnAfterDeserialize: Init");
-                Init();
-            }
         }
     }
 }

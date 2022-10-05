@@ -7,41 +7,7 @@ using UnityEngine.Events;
 namespace PlayGem.JawRed.Core.Variables
 {
     [CreateAssetMenu]
-    public class BoolVariable : BaseVariable, INotifyPropertyChanged
+    public class BoolVariable : BaseVariable<bool>
     {
-#if UNITY_EDITOR
-        [Multiline]
-        public string DeveloperDescription = "";
-#endif
-        public bool Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                _value = value;
-                OnPropertyChanged("Value");
-            }
-        }
-
-        [SerializeField]
-        private bool _value;
-
-        public bool InitValue;
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected override void Init()
-        {
-            PropertyChanged = null;
-            Value = InitValue;
-        }
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 }
