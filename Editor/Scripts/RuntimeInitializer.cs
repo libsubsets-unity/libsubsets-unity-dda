@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Subsets.Message2
 {
-    public static class RuntimeEventInitializer
+    public static class RuntimeInitializer
     {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void Reset()
@@ -17,7 +17,7 @@ namespace Subsets.Message2
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path);
                 IRuntimeInitialize initialize = asset as IRuntimeInitialize;
-                initialize?.Init();
+                initialize?.Reset();
             }
         }
     }

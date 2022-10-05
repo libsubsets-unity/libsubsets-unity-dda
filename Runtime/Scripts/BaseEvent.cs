@@ -12,26 +12,30 @@ namespace Subsets.Message2
     public class BaseEvent<T> : ScriptableObject, IRuntimeInitialize
     {
         public int ListenerCount = 0;
-
         public T Variable;
-
         private readonly List<UnityAction<T>> eventListener = 
             new List<UnityAction<T>>();
+
+        public void Reset()
+        {
+            Init();
+        }
+        
         public void Init()
         {
             eventListener.Clear();
             ListenerCount = 0;
         }
-               
+
+        public void OnEnable()
+        {
+            Init();
+        }
+
         public void Raise(T value)
         {
             Variable = value;
-  
-            /*
-            for(int i = eventListener.Count -1; i >= 0; i--)
-                eventListener[i].Invoke(value);
-            */
-            for (int i = 0; i < eventListener.Count; ++i)
+            for (var i = 0; i < eventListener.Count; ++i)
             {
                 eventListener[i].Invoke(value);
             }

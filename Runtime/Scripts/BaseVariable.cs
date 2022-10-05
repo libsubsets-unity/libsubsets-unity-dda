@@ -1,29 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Subsets.Message2;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace PlayGem.JawRed.Core.Variables
 {
-    public  class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged
+    public  class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged, IRuntimeInitialize
     {
-        /*
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        public static void Reset()
-        {
-            Debug.Log("BaseVariable::Reset");
-            if (Application.isEditor)
-            {
-                BaseVariable[] variables = Resources.FindObjectsOfTypeAll<BaseVariable>();
-                foreach (BaseVariable variable in variables)
-                {
-                    Debug.Log("BaseVariable::Reset: Init. name is " + variable.name);
-                    variable.Init();
-                }    
-            }
-        }
-        */
-        
 #if UNITY_EDITOR
         [Multiline]
         public string DeveloperDescription = "";
@@ -32,7 +18,7 @@ namespace PlayGem.JawRed.Core.Variables
         {
             get
             {
-                return value;
+                return this.value;
             }
             set
             {
@@ -41,39 +27,39 @@ namespace PlayGem.JawRed.Core.Variables
             }
                     
         }
-                
-        [SerializeField]
-        private T value;
-        
         public T InitValue;
-                        
-                
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [SerializeField] private T value;
+
+        public void Reset()
+        {
+            PropertyChanged = null;
+            Init();
+        }
+
         protected virtual void Init()
         {
             Value = InitValue;
         }
         
-        public event PropertyChangedEventHandler PropertyChanged;
-        
-        protected void OnPropertyChanged(string propertyName)
+        private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void OnBeforeSerialize()
         {
-            Debug.Log("BaseVariable::OnBeforeDeserialize");
         }
         
         private void OnEnable()
         {
-            Init();
             Debug.Log("BaseVariable::OnEnable: name is " + name);
+            Init();
         }
 
         public void OnAfterDeserialize()
         {
-            Debug.Log("BaseVariable::OnAfterDeserialize:" );
         }
     }
 }
