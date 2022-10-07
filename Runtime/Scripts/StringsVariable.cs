@@ -1,24 +1,16 @@
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace PlayGem.JawRed.Core.Variables
 {
     [CreateAssetMenu]
-    public class StringsVariable : ScriptableObject
+    public class StringsVariable : BaseVariable<List<string>>
     {
-#if UNITY_EDITOR
-        [Multiline]
-        public string DeveloperDescription = "";
-#endif
-        public List<string> Values;
-
-        public void OnEnable()
+        protected override void Initialize()
         {
-        }
-
-        public void OnValidate()
-        {
+            Value = InitialValue.ToList();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace PlayGem.JawRed.Core.Variables
             }
                     
         }
-        public T InitValue;
+        public T InitialValue;
         public event PropertyChangedEventHandler PropertyChanged;
 
         [SerializeField] private T value;
@@ -35,12 +35,12 @@ namespace PlayGem.JawRed.Core.Variables
         public void Reset()
         {
             PropertyChanged = null;
-            Init();
+            Initialize();
         }
 
-        protected virtual void Init()
+        protected virtual void Initialize()
         {
-            Value = InitValue;
+            Value = InitialValue;
         }
         
         private void OnPropertyChanged(string propertyName)
@@ -55,7 +55,7 @@ namespace PlayGem.JawRed.Core.Variables
         private void OnEnable()
         {
             Debug.Log("BaseVariable::OnEnable: name is " + name);
-            Init();
+            Initialize();
         }
 
         public void OnAfterDeserialize()
