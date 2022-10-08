@@ -11,6 +11,7 @@ namespace DefaultNamespace
     public class FloatVariableTrigger : MonoBehaviour 
     {
         public FloatVariable Variable;
+        public bool CompareWhenChanged = false;
         public float CompareEpsilon = 0.01f;
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable]
@@ -21,6 +22,14 @@ namespace DefaultNamespace
         {
             Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
             {
+                if (CompareWhenChanged)
+                {
+                    if (IsEqual(Variable.Value, Variable.OldValue))
+                    {
+                        return;
+                    }
+                }
+                
                 ConditionCompareResult result = new ConditionCompareResult();
                 foreach (FloatCondition condition in Conditions)
                 {

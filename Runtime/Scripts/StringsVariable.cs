@@ -8,9 +8,9 @@ namespace PlayGem.JawRed.Core.Variables
     [CreateAssetMenu]
     public class StringsVariable : BaseVariable<List<string>>
     {
-        protected override void Initialize()
+        protected override List<string> Clone(List<string> value)
         {
-            Value = InitialValue.ToList();
+            return value.ToList();
         }
     }
 }

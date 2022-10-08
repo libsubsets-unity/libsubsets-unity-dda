@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 namespace PlayGem.JawRed.Core.Variables
 {
-    public  class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged, IRuntimeInitialize
+    public abstract class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged, IRuntimeInitialize
     {
 #if UNITY_EDITOR
         [Multiline]
@@ -22,12 +22,14 @@ namespace PlayGem.JawRed.Core.Variables
             }
             set
             {
+                this.OldValue = Clone(this.Value);
                 this.value = value;
                 OnPropertyChanged("Value");
             }
                     
         }
         public T InitialValue;
+        public T OldValue;
         public event PropertyChangedEventHandler PropertyChanged;
 
         [SerializeField] private T value;
@@ -38,10 +40,12 @@ namespace PlayGem.JawRed.Core.Variables
             Initialize();
         }
 
-        protected virtual void Initialize()
+        protected void Initialize()
         {
-            Value = InitialValue;
+            Value = Clone(InitialValue);
         }
+
+        protected abstract T Clone(T value);
         
         private void OnPropertyChanged(string propertyName)
         {
