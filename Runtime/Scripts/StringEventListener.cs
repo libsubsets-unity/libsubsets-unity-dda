@@ -33,7 +33,7 @@ namespace Subsets.Message2
                 {
                     if (condition.Compare == StringCompare.Equal)
                     {
-                        result.Add(e.Variable == condition.Value);
+                        result.Add(e.Variable.Equals(condition.Value));
                     }
                     else if (condition.Compare == StringCompare.Contains)
                     {
@@ -41,7 +41,7 @@ namespace Subsets.Message2
                     }
                     else if (condition.Compare == StringCompare.IsNot)
                     {
-                        result.Add(e.Variable != condition.Value);
+                        result.Add(!e.Variable.Equals(condition.Value));
                     }    
                 }
 
