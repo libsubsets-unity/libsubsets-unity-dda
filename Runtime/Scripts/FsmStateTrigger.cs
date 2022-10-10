@@ -22,23 +22,27 @@ namespace Subsets.Message2
         public class StateCondition
         {
             [SerializeField]
-            public BaseFsm BaseFsm;
+            public BaseStateMachine StateMachine;
             public StateCompare Compare;
             public string Value;
         }
-        
+
+        public bool Enabled = false;
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable] public List<StateCondition> Conditions = new List<StateCondition>();
         public UnityEvent Listeners;
         
         public void Awake()
         {
-            foreach (StateCondition condition in Conditions)
+            if (Enabled)
             {
-                condition.BaseFsm.StateChanged.AddListener(delegate(string arg0)
+                foreach (StateCondition condition in Conditions)
                 {
-                    Execute();
-                });
+                    condition.StateMachine.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+                    {
+                        Execute();
+                    };
+                }
             }
         }
 
@@ -49,19 +53,19 @@ namespace Subsets.Message2
             {
                 if (condition.Compare == StateCompare.Equal)
                 {
-                    result.Add(condition.BaseFsm.GetState().Equals(condition.Value));
+                    result.Add(condition.StateMachine.State.Value.Equals(condition.Value));
                 }
                 else if (condition.Compare == StateCompare.Contains)
                 {
-                    result.Add(condition.BaseFsm.GetState().Contains(condition.Value));
+                    result.Add(condition.StateMachine.State.Value.Contains(condition.Value));
                 }
                 else if (condition.Compare == StateCompare.IsNot)
                 {
-                    result.Add(!condition.BaseFsm.GetState().Equals(condition.Value));
+                    result.Add(!condition.StateMachine.State.Value.Equals(condition.Value));
                 }    
                 else if (condition.Compare == StateCompare.IsInState)
                 {
-                    result.Add(condition.BaseFsm.IsInState(condition.Value));
+                    result.Add(condition.StateMachine.IsInState(condition.Value));
                 }
             }
             if (result.CheckConditionOperator(ConditionOperator))

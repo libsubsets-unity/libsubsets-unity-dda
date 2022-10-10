@@ -17,20 +17,24 @@ namespace Subsets.Message2
             public StringCompare Compare;
             public string Value;
         }
-        
+
+        public bool Enabled = true;
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable] public List<StringCondition> Conditions = new List<StringCondition>();
         public UnityEvent Listeners;
-        
+
         public void Awake()
         {
-            foreach (StringCondition condition in Conditions)
+            if (Enabled)
             {
-                condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+                foreach (StringCondition condition in Conditions)
                 {
-                    Debug.Log("State Changed:" + condition.Variable);
-                    Execute();
-                };
+                    condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+                    {
+                        Debug.Log("State Changed:" + condition.Variable);
+                        Execute();
+                    };
+                }
             }
         }
 
