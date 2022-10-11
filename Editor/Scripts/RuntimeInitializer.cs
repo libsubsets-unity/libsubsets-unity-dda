@@ -7,7 +7,7 @@ namespace Subsets.Message2
     public static class RuntimeInitializer
     {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        static void Reset()
+        public static void Reset()
         {
             Debug.Log("RuntimeEventInitializer reset");
                 

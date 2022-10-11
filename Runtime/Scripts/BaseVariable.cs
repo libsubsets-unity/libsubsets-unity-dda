@@ -36,12 +36,12 @@ namespace PlayGem.JawRed.Core.Variables
 
         public void Reset()
         {
-            PropertyChanged = null;
             Initialize();
         }
 
         protected void Initialize()
         {
+            PropertyChanged = null;
             Value = Clone(InitialValue);
         }
 
