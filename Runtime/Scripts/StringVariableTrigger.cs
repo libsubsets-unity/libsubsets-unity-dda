@@ -31,7 +31,6 @@ namespace Subsets.Message2
                 {
                     condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
                     {
-                        Debug.Log("State Changed:" + condition.Variable);
                         Execute();
                     };
                 }

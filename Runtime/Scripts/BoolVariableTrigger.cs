@@ -17,7 +17,6 @@ namespace Subsets.Message2
         {
             Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
             {
-                Debug.Log("State Changed:" + Variable.Value);
                 if (Condition.Compare == BoolCompare.IsTrue)
                 {
                     if (Variable.Value == true)
