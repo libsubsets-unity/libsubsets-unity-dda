@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEngine;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Editor
 {
     public static class RuntimeInitializer
     {

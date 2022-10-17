@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Editor
 {
     [CustomEditor(typeof(BoolEvent), editorForChildClasses: true)]
     public class BoolEventEditor : UnityEditor.Editor

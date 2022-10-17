@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace PlayGem.JawRed.Core.Variables
+namespace Subsets.Message2.Runtime
 {
     [CreateAssetMenu]
     public class IntegerVariable : BaseVariable<int>

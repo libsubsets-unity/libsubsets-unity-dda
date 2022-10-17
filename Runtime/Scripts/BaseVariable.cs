@@ -6,7 +6,7 @@ using Subsets.Message2;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace PlayGem.JawRed.Core.Variables
+namespace Subsets.Message2.Runtime
 {
     public abstract class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged, IRuntimeInitialize
     {

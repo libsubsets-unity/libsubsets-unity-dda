@@ -1,7 +1,6 @@
-﻿using PlayGem.JawRed.Core.Variables;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Runtime
 {
     [CreateAssetMenu]
     public class IntegerEvent : BaseEvent<int>

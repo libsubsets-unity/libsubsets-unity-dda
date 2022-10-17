@@ -3,7 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace PlayGem.JawRed.Core.Variables
+namespace Subsets.Message2.Runtime
 {
     [CreateAssetMenu]
     public class StringsVariable : BaseVariable<List<string>>

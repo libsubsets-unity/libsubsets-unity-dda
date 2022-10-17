@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Subsets.Message2.Runtime;
 
 namespace Subsets.Message2.Editor
 {

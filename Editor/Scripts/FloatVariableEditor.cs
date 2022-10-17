@@ -1,8 +1,8 @@
-﻿using PlayGem.JawRed.Core.Variables;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using Subsets.Message2.Runtime;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Editor
 {
     [CustomEditor(typeof(FloatVariable), editorForChildClasses: true)]
     public class VariableEditor : UnityEditor.Editor

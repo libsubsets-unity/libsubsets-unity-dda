@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Runtime
 {
     public class TestGameEventListener : MonoBehaviour
     {

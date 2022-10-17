@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace PlayGem.JawRed.Core.Variables
+namespace Subsets.Message2.Runtime
 {
     [CreateAssetMenu]
     public class BoolVariable : BaseVariable<bool>

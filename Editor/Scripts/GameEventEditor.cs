@@ -1,7 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Subsets.Message2.Runtime;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Editor
 {
     [CustomEditor(typeof(GameEvent), editorForChildClasses: true)]
     public class GameEventEditor : UnityEditor.Editor

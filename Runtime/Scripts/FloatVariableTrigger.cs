@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using PlayGem.JawRed.Core.Variables;
 using Subsets.Message2;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace DefaultNamespace
+namespace Subsets.Message2.Runtime
 {
     public class FloatVariableTrigger : MonoBehaviour 
     {

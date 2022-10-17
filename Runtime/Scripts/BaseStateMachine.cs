@@ -1,10 +1,9 @@
 using System;
 using System.ComponentModel;
-using PlayGem.JawRed.Core.Variables;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Runtime
 {
     public abstract class BaseStateMachine: ScriptableObject, INotifyPropertyChanged
     {
