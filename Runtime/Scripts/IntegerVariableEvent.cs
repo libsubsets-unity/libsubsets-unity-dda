@@ -1,5 +1,4 @@
-﻿using NPOI.POIFS.Properties;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
