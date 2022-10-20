@@ -34,6 +34,7 @@ namespace Subsets.Message2
 
         public void Raise(T value)
         {
+            Debug.Log("BaseEvent::Raise: " + name);
             Variable = value;
             for (var i = 0; i < eventListener.Count; ++i)
             {

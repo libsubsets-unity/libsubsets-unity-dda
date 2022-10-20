@@ -24,39 +24,40 @@ namespace Subsets.Message2.Runtime
 
         public void Awake()
         {
-            if (Enabled)
+            foreach (StringCondition condition in Conditions)
             {
-                foreach (StringCondition condition in Conditions)
+                condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
                 {
-                    condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
-                    {
-                        Execute();
-                    };
-                }
+                    Execute();
+                };
             }
         }
 
         private void Execute()
         {
-            ConditionCompareResult result = new ConditionCompareResult();
-            foreach (StringCondition condition in Conditions)
+            if (Enabled)
             {
-                if (condition.Compare == StringCompare.Equal)
+                ConditionCompareResult result = new ConditionCompareResult();
+                foreach (StringCondition condition in Conditions)
                 {
-                    result.Add(condition.Variable.Value.Equals(condition.Value));
+                    if (condition.Compare == StringCompare.Equal)
+                    {
+                        result.Add(condition.Variable.Value.Equals(condition.Value));
+                    }
+                    else if (condition.Compare == StringCompare.Contains)
+                    {
+                        result.Add(condition.Variable.Value.Contains(condition.Value));
+                    }
+                    else if (condition.Compare == StringCompare.IsNot)
+                    {
+                        result.Add(!condition.Variable.Value.Equals(condition.Value));
+                    }
                 }
-                else if (condition.Compare == StringCompare.Contains)
+
+                if (result.CheckConditionOperator(ConditionOperator))
                 {
-                    result.Add(condition.Variable.Value.Contains(condition.Value));
+                    Listeners?.Invoke();
                 }
-                else if (condition.Compare == StringCompare.IsNot)
-                {
-                    result.Add(!condition.Variable.Value.Equals(condition.Value));
-                }    
-            }
-            if (result.CheckConditionOperator(ConditionOperator))
-            {
-                Listeners?.Invoke();
             }
         }
     }
