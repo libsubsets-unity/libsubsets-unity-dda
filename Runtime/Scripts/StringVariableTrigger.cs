@@ -17,7 +17,6 @@ namespace Subsets.Message2.Runtime
             public string Value;
         }
 
-        public bool Enabled = true;
         public ResponseConditionOperator ConditionOperator;
         [NonReorderable] public List<StringCondition> Conditions = new List<StringCondition>();
         public UnityEvent Listeners;
@@ -33,9 +32,13 @@ namespace Subsets.Message2.Runtime
             }
         }
 
+        private void OnEnable()
+        {
+        }
+
         private void Execute()
         {
-            if (Enabled)
+            if (enabled)
             {
                 ConditionCompareResult result = new ConditionCompareResult();
                 foreach (StringCondition condition in Conditions)
