@@ -15,6 +15,7 @@ namespace Subsets.Message2.Runtime
             public StringVariable Variable;
             public StringCompare Compare;
             public string Value;
+            public bool Trigger = true;
         }
 
         public ResponseConditionOperator ConditionOperator;
@@ -25,10 +26,14 @@ namespace Subsets.Message2.Runtime
         {
             foreach (StringCondition condition in Conditions)
             {
-                condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+                if (condition.Trigger)
                 {
-                    Execute();
-                };
+                    condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+                    {
+                        Execute();
+                    };    
+                }
+                
             }
         }
 
