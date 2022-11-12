@@ -4,7 +4,10 @@
   "displayName": "Subsets Message2",
   "unity": "2019.4",
   "unityRelease": "21f1",
-  "keywords": ["Test", "test2"],
+  "keywords": [
+    "Test",
+    "test2"
+  ],
   "author": {
     "name": "Lee, Hyeon-gi",
     "email": "maaya.lee@gmail.com",
@@ -13,5 +16,6 @@
   "type": "library",
   "dependencies": {
     "com.maayalee.libsubsets-unity-unitest": "1.0.1"
-  }
+  },
+  "description": "dd"
 }
