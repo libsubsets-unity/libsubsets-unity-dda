@@ -10,10 +10,8 @@ namespace Subsets.Message2.Runtime
 {
     public abstract class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged, IRuntimeInitialize
     {
-#if UNITY_EDITOR
         [Multiline]
         public string DeveloperDescription = "";
-#endif
         public T Value
         {
             get
