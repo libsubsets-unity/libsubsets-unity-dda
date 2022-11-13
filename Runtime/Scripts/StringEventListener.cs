@@ -21,7 +21,7 @@ namespace Subsets.Message2.Runtime
     public class StringEventListener : BaseEventListener<string>
     {
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable] public List<StringCondition> Conditions = new List<StringCondition>();
+        public List<StringCondition> Conditions = new List<StringCondition>();
         
         protected  override bool CheckCompareCondition()
         {

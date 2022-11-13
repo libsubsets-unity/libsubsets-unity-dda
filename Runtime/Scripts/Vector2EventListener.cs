@@ -23,7 +23,7 @@ namespace Subsets.Message2.Runtime
         static public float CompareEpsilon = 0.01f;
     
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable] 
+        
         public List<Vector2Condition> Conditions = new List<Vector2Condition>();
         
         protected  override bool CheckCompareCondition()

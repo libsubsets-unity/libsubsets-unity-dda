@@ -19,7 +19,7 @@ namespace Subsets.Message2.Runtime
         }
 
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable] public List<StringCondition> Conditions = new List<StringCondition>();
+        public List<StringCondition> Conditions = new List<StringCondition>();
         public UnityEvent Listeners;
 
         public void Awake()

@@ -22,7 +22,6 @@ namespace Subsets.Message2
     {
         public ResponseConditionOperator ConditionOperator;
         public float CompareEpsilon = 0.01f;
-        [NonReorderable]
         public List<FloatCondition> Conditions;
         protected  override bool CheckCompareCondition()
         {

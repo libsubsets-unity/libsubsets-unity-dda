@@ -21,7 +21,7 @@ namespace Subsets.Message2.Runtime
     public class IntegerEventListener : BaseEventListener<int>
     {
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable]
+       
         public List<IntegerCondition> Conditions;
         protected  override bool CheckCompareCondition()
         {

@@ -21,7 +21,7 @@ namespace Subsets.Message2.Runtime
     public class LongEventListener : BaseEventListener<long>
     {
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable]
+       
         public List<LongCondition> Conditions;
         protected  override bool CheckCompareCondition()
         {

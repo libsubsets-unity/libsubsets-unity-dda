@@ -13,7 +13,7 @@ namespace Subsets.Message2.Runtime
         public bool CompareWhenChanged = false;
         public float CompareEpsilon = 0.01f;
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable]
+       
         public List<FloatCondition> Conditions;
         public UnityEvent<FloatVariable> Listeners;
         

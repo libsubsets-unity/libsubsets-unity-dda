@@ -10,7 +10,7 @@ namespace Subsets.Message2.Runtime
     {
         public LongVariable Variable;
         public ResponseConditionOperator ConditionOperator;
-        [NonReorderable]
+       
         public List<LongCondition> Conditions;
         public UnityEvent<LongVariable> Listeners;
         public void Awake()
