@@ -28,13 +28,26 @@ namespace Subsets.Message2.Runtime
             {
                 if (condition.Trigger)
                 {
-                    condition.Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
-                    {
-                        Execute();
-                    };    
+                    condition.Variable.PropertyChanged += OnExecute;
                 }
                 
             }
+        }
+
+        public void OnDestroy()
+        {
+            foreach (StringCondition condition in Conditions)
+            {
+                if (condition.Trigger)
+                {
+                    condition.Variable.PropertyChanged -= OnExecute;
+                }
+            }
+        }
+
+        private void OnExecute(object sender, PropertyChangedEventArgs args)
+        {
+            Execute();
         }
 
         private void OnEnable()
