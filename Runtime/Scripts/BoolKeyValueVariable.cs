@@ -18,6 +18,10 @@ namespace Subsets.Message2.Runtime
     {
         protected override List<BoolKeyValue<BoolVariable>> Clone(List<BoolKeyValue<BoolVariable>> value)
         {
+            if (null == value)
+            {
+                return new List<BoolKeyValue<BoolVariable>>();
+            }
             return value.ToList();
         }
     }

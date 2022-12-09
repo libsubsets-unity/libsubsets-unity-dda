@@ -18,6 +18,10 @@ namespace Subsets.Message2.Runtime
     {
         protected override List<StringKeyValue<StringVariable>> Clone(List<StringKeyValue<StringVariable>> value)
         {
+            if (null == value)
+            {
+                return new List<StringKeyValue<StringVariable>>();
+            }
             return value.ToList();
         }
     }
