@@ -19,38 +19,45 @@ namespace Subsets.Message2.Runtime
         
         private void Awake()
         {
-            Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+            Variable.PropertyChanged += OnExecute;
+        }
+
+        private void Destroy()
+        {
+            Variable.PropertyChanged -= OnExecute;
+        }
+        
+        private void OnExecute(object sender, PropertyChangedEventArgs args)
+        {
+            if (CompareWhenChanged)
             {
-                if (CompareWhenChanged)
+                if (IsEqual(Variable.Value, Variable.OldValue))
                 {
-                    if (IsEqual(Variable.Value, Variable.OldValue))
-                    {
-                        return;
-                    }
+                    return;
                 }
+            }
                 
-                ConditionCompareResult result = new ConditionCompareResult();
-                foreach (FloatCondition condition in Conditions)
+            ConditionCompareResult result = new ConditionCompareResult();
+            foreach (FloatCondition condition in Conditions)
+            {
+                if (condition.Compare == FloatCompare.Equal)
                 {
-                    if (condition.Compare == FloatCompare.Equal)
-                    {
-                        result.Add(IsEqual(Variable.Value, condition.Value));
-                    }
-                    else if (condition.Compare == FloatCompare.IsNot)
-                    {
-                        result.Add(!IsEqual(Variable.Value, condition.Value));
-                    }
-                    else if (condition.Compare == FloatCompare.Updated)
-                    {
-                        result.Add(true);
-                    }
+                    result.Add(IsEqual(Variable.Value, condition.Value));
                 }
+                else if (condition.Compare == FloatCompare.IsNot)
+                {
+                    result.Add(!IsEqual(Variable.Value, condition.Value));
+                }
+                else if (condition.Compare == FloatCompare.Updated)
+                {
+                    result.Add(true);
+                }
+            }
                 
-                if (result.CheckConditionOperator(ConditionOperator))
-                {
-                    Listeners?.Invoke(Variable);
-                }
-            };
+            if (result.CheckConditionOperator(ConditionOperator))
+            {
+                Listeners?.Invoke(Variable);
+            }
         }
         
         private bool IsEqual(float a, float b)

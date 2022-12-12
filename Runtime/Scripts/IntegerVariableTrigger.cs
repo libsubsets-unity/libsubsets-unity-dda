@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
@@ -15,30 +16,37 @@ namespace Subsets.Message2.Runtime
         public UnityEvent<IntegerVariable> Listeners;
         public void Awake()
         {
-            Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
-            {
-                ConditionCompareResult result = new ConditionCompareResult();
-                foreach (IntegerCondition condition in Conditions)
-                {
-                    if (condition.Compare == IntegerCompare.Equal)
-                    {
-                        result.Add(Variable.Value == condition.Value);
-                    }
-                    else if (condition.Compare == IntegerCompare.IsNot)
-                    {
-                        result.Add(Variable.Value != condition.Value);
-                    }
-                    else if (condition.Compare == IntegerCompare.Updated)
-                    {
-                       result.Add(true); 
-                    }
-                }
+            Variable.PropertyChanged += OnExecute;
+        }
 
-                if (result.CheckConditionOperator(ConditionOperator))
+        private void Destroy()
+        {
+            Variable.PropertyChanged -= OnExecute;
+        }
+
+        private void OnExecute(object sender, PropertyChangedEventArgs args)
+        {
+            ConditionCompareResult result = new ConditionCompareResult();
+            foreach (IntegerCondition condition in Conditions)
+            {
+                if (condition.Compare == IntegerCompare.Equal)
                 {
-                    Listeners?.Invoke(Variable);
+                    result.Add(Variable.Value == condition.Value);
                 }
-            };
+                else if (condition.Compare == IntegerCompare.IsNot)
+                {
+                    result.Add(Variable.Value != condition.Value);
+                }
+                else if (condition.Compare == IntegerCompare.Updated)
+                {
+                    result.Add(true); 
+                }
+            }
+
+            if (result.CheckConditionOperator(ConditionOperator))
+            {
+                Listeners?.Invoke(Variable);
+            }
         }
     }
 }

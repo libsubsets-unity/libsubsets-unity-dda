@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
@@ -19,10 +20,17 @@ namespace Subsets.Message2.Runtime
         }
         public void Awake()
         {
-            Variable.Find(Id).PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
-            {
-                Execute();
-            };
+            Variable.Find(Id).PropertyChanged += OnExecute;
+        }
+
+        public void OnDestroy()
+        {
+            Variable.Find(Id).PropertyChanged -= OnExecute;
+        }
+
+        private void OnExecute(object sender, PropertyChangedEventArgs args)
+        {
+            Execute();
         }
 
         private void Execute()

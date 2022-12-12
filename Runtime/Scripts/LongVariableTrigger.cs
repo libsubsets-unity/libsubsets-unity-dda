@@ -15,30 +15,37 @@ namespace Subsets.Message2.Runtime
         public UnityEvent<LongVariable> Listeners;
         public void Awake()
         {
-            Variable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
-            {
-                ConditionCompareResult result = new ConditionCompareResult();
-                foreach (LongCondition condition in Conditions)
-                {
-                    if (condition.Compare == LongCompare.Equal)
-                    {
-                        result.Add(Variable.Value == condition.Value);
-                    }
-                    else if (condition.Compare == LongCompare.IsNot)
-                    {
-                        result.Add(Variable.Value != condition.Value);
-                    }
-                    else if (condition.Compare == LongCompare.Updated)
-                    {
-                        result.Add(true);
-                    }
-                }
+            Variable.PropertyChanged += OnExecute;
+        }
 
-                if (result.CheckConditionOperator(ConditionOperator))
+        private void Destroy()
+        {
+            Variable.PropertyChanged -= OnExecute;
+        }
+        
+        private void OnExecute(object sender, PropertyChangedEventArgs args)
+        {
+            ConditionCompareResult result = new ConditionCompareResult();
+            foreach (LongCondition condition in Conditions)
+            {
+                if (condition.Compare == LongCompare.Equal)
                 {
-                    Listeners?.Invoke(Variable);
+                    result.Add(Variable.Value == condition.Value);
                 }
-            };
+                else if (condition.Compare == LongCompare.IsNot)
+                {
+                    result.Add(Variable.Value != condition.Value);
+                }
+                else if (condition.Compare == LongCompare.Updated)
+                {
+                    result.Add(true);
+                }
+            }
+
+            if (result.CheckConditionOperator(ConditionOperator))
+            {
+                Listeners?.Invoke(Variable);
+            }
         }
     }
 }
