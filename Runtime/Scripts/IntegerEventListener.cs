@@ -8,7 +8,8 @@ namespace Subsets.Message2.Runtime
     public enum IntegerCompare
     {
         Equal,
-        IsNot
+        IsNot,
+        Updated
     }
     
     [Serializable]
@@ -38,6 +39,10 @@ namespace Subsets.Message2.Runtime
                     else if (condition.Compare == IntegerCompare.IsNot)
                     {
                         result.Add(e.Variable != condition.Value);
+                    }
+                    else if (condition.Compare == IntegerCompare.Updated)
+                    {
+                        result.Add(true);
                     }
                 }
                 return result.CheckConditionOperator(ConditionOperator);

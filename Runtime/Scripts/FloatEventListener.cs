@@ -8,7 +8,8 @@ namespace Subsets.Message2
     public enum FloatCompare
     {
         Equal,
-        IsNot
+        IsNot,
+        Updated,
     }
     
     [Serializable]
@@ -38,6 +39,10 @@ namespace Subsets.Message2
                     else if (condition.Compare == FloatCompare.IsNot)
                     {
                         result.Add(!IsEqual(e.Variable, condition.Value));
+                    }
+                    else if (condition.Compare == FloatCompare.Updated)
+                    {
+                        result.Add(true);
                     }
                 }
                 return result.CheckConditionOperator(ConditionOperator);

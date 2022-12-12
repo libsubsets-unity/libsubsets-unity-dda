@@ -8,7 +8,8 @@ namespace Subsets.Message2
     public enum BoolCompare
     {
         IsTrue,
-        IsFalse
+        IsFalse,
+        Updated,
     }
 
     [Serializable]
@@ -32,6 +33,10 @@ namespace Subsets.Message2
                 else if (Condition.Compare == BoolCompare.IsFalse)
                 {
                     return e.Variable == false;
+                }
+                else if (Condition.Compare == BoolCompare.Updated)
+                {
+                    return true;
                 }
 
                 return false;

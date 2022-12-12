@@ -40,6 +40,10 @@ namespace Subsets.Message2.Runtime
                     {
                         result.Add(!IsEqual(Variable.Value, condition.Value));
                     }
+                    else if (condition.Compare == FloatCompare.Updated)
+                    {
+                        result.Add(true);
+                    }
                 }
                 
                 if (result.CheckConditionOperator(ConditionOperator))

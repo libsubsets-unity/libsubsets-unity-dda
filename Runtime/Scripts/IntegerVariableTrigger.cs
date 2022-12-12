@@ -28,6 +28,10 @@ namespace Subsets.Message2.Runtime
                     {
                         result.Add(Variable.Value != condition.Value);
                     }
+                    else if (condition.Compare == IntegerCompare.Updated)
+                    {
+                       result.Add(true); 
+                    }
                 }
 
                 if (result.CheckConditionOperator(ConditionOperator))

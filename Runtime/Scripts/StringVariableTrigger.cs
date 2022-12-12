@@ -73,6 +73,10 @@ namespace Subsets.Message2.Runtime
                     {
                         result.Add(!condition.Variable.Value.Equals(condition.Value));
                     }
+                    else if (condition.Compare == StringCompare.Updated)
+                    {
+                        result.Add(true);
+                    }
                 }
 
                 if (result.CheckConditionOperator(ConditionOperator))

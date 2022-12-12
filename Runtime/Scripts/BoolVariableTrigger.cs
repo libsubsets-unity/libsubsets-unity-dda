@@ -50,6 +50,14 @@ namespace Subsets.Message2.Runtime
                         }
                     }
                 }
+                else if(Condition.Compare == BoolCompare.Updated)
+                {
+                    Listeners.Invoke(Variable);
+                    if (StopWhenConditionMatched)
+                    {
+                        enabled = false;
+                    }
+                }
             }           
         }
     }

@@ -8,7 +8,8 @@ namespace Subsets.Message2.Runtime
     public enum LongCompare
     {
         Equal,
-        IsNot
+        IsNot,
+        Updated
     }
     
     [Serializable]
@@ -38,6 +39,10 @@ namespace Subsets.Message2.Runtime
                     else if (condition.Compare == LongCompare.IsNot)
                     {
                         result.Add(e.Variable != condition.Value);
+                    }
+                    else if (condition.Compare == LongCompare.Updated)
+                    {
+                        result.Add(true);
                     }
                 }
                 return result.CheckConditionOperator(ConditionOperator);

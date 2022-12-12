@@ -9,7 +9,8 @@ namespace Subsets.Message2.Runtime
     {
         Equal,
         Contains,
-        IsNot
+        IsNot,
+        Updated,
     }
    
     [Serializable]
@@ -43,6 +44,10 @@ namespace Subsets.Message2.Runtime
                     {
                         result.Add(!e.Variable.Equals(condition.Value));
                     }    
+                    else if (condition.Compare == StringCompare.Updated)
+                    {
+                        result.Add(true);
+                    }
                 }
 
                 return result.CheckConditionOperator(ConditionOperator);
