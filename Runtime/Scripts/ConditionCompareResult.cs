@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Runtime
 {
     public enum ResponseConditionOperator
     {

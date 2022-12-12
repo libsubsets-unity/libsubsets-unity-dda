@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Runtime
 {
     public class ButtonClickEventHook : MonoBehaviour
     {

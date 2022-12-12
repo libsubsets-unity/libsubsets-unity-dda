@@ -5,9 +5,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Subsets.Message2
+namespace Subsets.Message2.Runtime
 {
-    
     [CreateAssetMenu]
     public class BaseEvent<T> : ScriptableObject, IRuntimeInitialize
     {

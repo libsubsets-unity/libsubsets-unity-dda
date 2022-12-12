@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Subsets.Message2 
+namespace Subsets.Message2.Runtime 
 {
     public class BaseEventListener<T> : MonoBehaviour
     {

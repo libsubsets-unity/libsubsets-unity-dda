@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Subsets.Message2;
+using Subsets.Message2.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Subsets.Message2;
+using Subsets.Message2.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 
