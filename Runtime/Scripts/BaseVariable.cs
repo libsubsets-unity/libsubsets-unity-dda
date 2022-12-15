@@ -1,10 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using Subsets.Message2.Runtime;
+﻿using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Subsets.Message2.Runtime
 {
@@ -32,12 +27,7 @@ namespace Subsets.Message2.Runtime
 
         [SerializeField] private T value;
 
-        public void Reset()
-        {
-            Initialize();
-        }
-
-        protected void Initialize()
+        public void Initialize()
         {
             PropertyChanged = null;
             Value = Clone(InitialValue);

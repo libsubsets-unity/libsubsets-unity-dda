@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,20 +5,14 @@ using UnityEngine.Events;
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
     public class BaseEvent<T> : ScriptableObject, IRuntimeInitialize
     {
         public int ListenerCount = 0;
-        public T Variable;
         private readonly List<UnityAction<T>> eventListener = 
             new List<UnityAction<T>>();
+        public T Variable;
 
-        public void Reset()
-        {
-            Init();
-        }
-        
-        public void Init()
+        public void Initialize()
         {
             eventListener.Clear();
             ListenerCount = 0;
@@ -28,7 +20,7 @@ namespace Subsets.Message2.Runtime
 
         public void OnEnable()
         {
-            Init();
+            Initialize();
         }
 
         public void Raise(T value)

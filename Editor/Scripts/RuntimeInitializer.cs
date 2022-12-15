@@ -8,9 +8,9 @@ namespace Subsets.Message2.Editor
     public static class RuntimeInitializer
     {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        public static void Reset()
+        public static void Initialize()
         {
-            Debug.Log("RuntimeEventInitializer reset");
+            Debug.Log("RuntimeEventInitializer Reset");
                 
             var guids = AssetDatabase.FindAssets("t:ScriptableObject");
             foreach (var guid in guids)
@@ -18,7 +18,7 @@ namespace Subsets.Message2.Editor
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path);
                 IRuntimeInitialize initialize = asset as IRuntimeInitialize;
-                initialize?.Reset();
+                initialize?.Initialize();
             }
         }
     }

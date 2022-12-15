@@ -2,8 +2,6 @@
   "name": "com.maayalee.libsubsets-unity-message2",
   "version": "1.0.4+develop",
   "displayName": "Subsets Message2",
-  "unity": "2019.4",
-  "unityRelease": "21f1",
   "keywords": [
     "Test",
     "test2"

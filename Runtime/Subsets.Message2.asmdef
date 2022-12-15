@@ -2,16 +2,9 @@
     "name": "Subsets.Message2",
     "rootNamespace": "",
     "references": [],
-    "includePlatforms": [
-        "Android",
-        "Editor",
-        "iOS",
-        "WebGL",
-        "WindowsStandalone32",
-        "WindowsStandalone64"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": true,
+    "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
