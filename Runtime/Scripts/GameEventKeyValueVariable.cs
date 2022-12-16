@@ -13,7 +13,7 @@ namespace Subsets.Message2.Runtime
         public T Value;
     }
     
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Variable/GameEventKeyValue")]
     public class GameEventKeyValueVariable : BaseVariable<List<GameEventKeyValue<GameEventVariable>>>
     {
         protected override List<GameEventKeyValue<GameEventVariable>> Clone(List<GameEventKeyValue<GameEventVariable>> value)

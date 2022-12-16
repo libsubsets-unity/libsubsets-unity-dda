@@ -2,7 +2,7 @@
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Event/Bool")]
     public class BoolEvent : BaseEvent<bool>
     {
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Variable/Integer")]
     public class IntegerVariable : BaseVariable<int>
     {
         protected override int Clone(int value)

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Subsets.Message2.Runtime 
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Event/GameObject")]
     public class GameObjectEvent : BaseEvent<GameObject>
     {
     }

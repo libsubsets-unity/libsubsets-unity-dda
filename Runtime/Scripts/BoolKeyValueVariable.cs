@@ -13,7 +13,7 @@ namespace Subsets.Message2.Runtime
         public T Value;
     }
     
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Variable/BoolKeyValue")]
     public class BoolKeyValueVariable : BaseVariable<List<BoolKeyValue<BoolVariable>>>
     {
         protected override List<BoolKeyValue<BoolVariable>> Clone(List<BoolKeyValue<BoolVariable>> value)

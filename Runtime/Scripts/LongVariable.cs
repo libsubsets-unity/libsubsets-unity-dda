@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Variable/Long")]
     public class LongVariable : BaseVariable<long>
     {
         protected override long Clone(long value)

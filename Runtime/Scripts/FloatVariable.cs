@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Variable/Float")]
     public class FloatVariable : BaseVariable<float>
     {
         protected override float Clone(float value)

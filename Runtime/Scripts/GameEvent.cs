@@ -11,7 +11,7 @@ namespace Subsets.Message2.Runtime
         
     }
     
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Event/Game")]
     public class GameEvent : BaseEvent<Void>
     {
     }

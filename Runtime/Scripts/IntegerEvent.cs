@@ -2,7 +2,7 @@
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Event/Integer")]
     public class IntegerEvent : BaseEvent<int>
     {
         public void Raise(IntegerVariable variable)

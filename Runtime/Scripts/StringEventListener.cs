@@ -19,6 +19,7 @@ namespace Subsets.Message2.Runtime
         public StringCompare Compare;
         public string Value;
     }
+    
     public class StringEventListener : BaseEventListener<string>
     {
         public ResponseConditionOperator ConditionOperator;

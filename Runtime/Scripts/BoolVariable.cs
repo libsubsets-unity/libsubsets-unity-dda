@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Subsets.Message2.Runtime
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Message2/Variable/Bool")]
     public class BoolVariable : BaseVariable<bool>
     {
         protected override bool Clone(bool value)
