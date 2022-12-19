@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    public abstract class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, INotifyPropertyChanged, IRuntimeInitialize
+    public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, IRuntimeFinalization
     {
         [Multiline]
         public string DeveloperDescription = "";
@@ -26,6 +27,18 @@ namespace Subsets.Message2.Runtime
         public event PropertyChangedEventHandler PropertyChanged;
 
         [SerializeField] private T value;
+        
+        private void OnEnable()
+        {
+            Debug.Log("BaseVariable::OnEnable: name is " + name);
+            Initialize();
+        }
+        
+        private void OnDisable()
+        {
+            Debug.Log("BaseVariable::OnDisable: name is " + name);
+            Finalize();
+        }
 
         public void Initialize()
         {
@@ -33,25 +46,18 @@ namespace Subsets.Message2.Runtime
             Value = Clone(InitialValue);
         }
 
+        public void Finalize()
+        {
+            PropertyChanged = null;
+        }
+        
+        
+
         protected abstract T Clone(T value);
         
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public void OnBeforeSerialize()
-        {
-        }
-        
-        private void OnEnable()
-        {
-            Debug.Log("BaseVariable::OnEnable: name is " + name);
-            Initialize();
-        }
-
-        public void OnAfterDeserialize()
-        {
         }
     }
 }
