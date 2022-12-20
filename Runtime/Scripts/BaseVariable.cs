@@ -16,7 +16,7 @@ namespace Subsets.Message2.Runtime
             }
             set
             {
-                this.OldValue = Clone(this.Value);
+                this.OldValue = Clone(this.value);
                 this.value = value;
                 OnPropertyChanged("Value");
             }
@@ -41,23 +41,23 @@ namespace Subsets.Message2.Runtime
             RuntimeFinalize();
         }
 
-        public void RuntimeInitialize()
+        public virtual void RuntimeInitialize()
         {
             this.value = Clone(InitialValue);
         }
 
-        public void RaiseRuntimeInitializeEvent()
+        public virtual void RaiseRuntimeInitializeEvent()
         {
             OnPropertyChanged("Value");
         }
 
-        public void RuntimeFinalize()
+        public virtual void RuntimeFinalize()
         {
             PropertyChanged = null;
         }
 
         protected abstract T Clone(T value);
-        
+
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

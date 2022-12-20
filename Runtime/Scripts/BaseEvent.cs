@@ -60,5 +60,10 @@ namespace Subsets.Message2.Runtime
         {
             eventListener.Clear();
         }
+
+        public int RegisterListenersCount()
+        {
+            return eventListener.Count;
+        }
     }
 }
