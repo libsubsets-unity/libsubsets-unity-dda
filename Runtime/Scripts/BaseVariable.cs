@@ -31,27 +31,30 @@ namespace Subsets.Message2.Runtime
         private void OnEnable()
         {
             Debug.Log("BaseVariable::OnEnable: name is " + name);
-            Initialize();
+            RuntimeInitialize();
+            RaiseRuntimeInitializeEvent();
         }
         
         private void OnDisable()
         {
             Debug.Log("BaseVariable::OnDisable: name is " + name);
-            Finalize();
+            RuntimeFinalize();
         }
 
-        public void Initialize()
+        public void RuntimeInitialize()
         {
-            PropertyChanged = null;
-            Value = Clone(InitialValue);
+            this.value = Clone(InitialValue);
         }
 
-        public void Finalize()
+        public void RaiseRuntimeInitializeEvent()
+        {
+            OnPropertyChanged("Value");
+        }
+
+        public void RuntimeFinalize()
         {
             PropertyChanged = null;
         }
-        
-        
 
         protected abstract T Clone(T value);
         

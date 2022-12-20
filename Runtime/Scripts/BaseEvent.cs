@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,22 +6,24 @@ using UnityEngine.Events;
 
 namespace Subsets.Message2.Runtime
 {
-    public class BaseEvent<T> : ScriptableObject, IRuntimeInitialize
+    public class BaseEvent<T> : ScriptableObject, IRuntimeFinalization
     {
-        public int ListenerCount = 0;
         private readonly List<UnityAction<T>> eventListener = 
             new List<UnityAction<T>>();
         public T Variable;
-
-        public void Initialize()
-        {
-            eventListener.Clear();
-            ListenerCount = 0;
-        }
-
+        
         public void OnEnable()
         {
-            Initialize();
+        }
+
+        public void OnDisable()
+        {
+            RuntimeFinalize();
+        }
+        
+        public void RuntimeFinalize()
+        {
+            eventListener.Clear();
         }
 
         public void Raise(T value)
@@ -42,7 +45,6 @@ namespace Subsets.Message2.Runtime
         {
             if (!eventListener.Contains(action))
                 eventListener.Add(action);
-            ListenerCount = eventListener.Count();
         }
        
                
@@ -52,7 +54,11 @@ namespace Subsets.Message2.Runtime
             {
                 eventListener.Remove(action);
             }
-            ListenerCount = eventListener.Count();
-        } 
+        }
+
+        public void UnregisterAllListeners()
+        {
+            eventListener.Clear();
+        }
     }
 }
