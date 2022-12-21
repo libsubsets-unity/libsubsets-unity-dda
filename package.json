@@ -1,6 +1,6 @@
 {
   "name": "com.maayalee.libsubsets-unity-message2",
-  "version": "1.0.4+develop",
+  "version": "1.1.0",
   "displayName": "Subsets Message2",
   "keywords": [
     "Test",
@@ -15,5 +15,5 @@
   "dependencies": {
     "com.maayalee.libsubsets-unity-unitest": "1.0.1"
   },
-  "description": "dd"
+  "description": "Subset Message2"
 }
