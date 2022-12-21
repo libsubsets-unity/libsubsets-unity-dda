@@ -33,6 +33,7 @@ namespace Subsets.Message2.Runtime
                 variable = new GameEventKeyValue<GameEventVariable>();
                 variable.Key = id;
                 variable.Value = ScriptableObject.CreateInstance<GameEventVariable>();
+                variable.Value.name = String.Format("dynamic_value:{0}:{0}", name, id);
                 Value.Add(variable);
             }
             return variable.Value;

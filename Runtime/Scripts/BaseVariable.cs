@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, IRuntimeFinalization, ISerializationCallbackReceiver
+    public class RuntimeInitializeInstances
     {
+        public static List<IRuntimeInitialize> Instances;
+    }
+    public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, ISerializationCallbackReceiver
+    {
+        
         [Multiline]
         public string DeveloperDescription = "";
         public T Value
@@ -29,9 +35,18 @@ namespace Subsets.Message2.Runtime
 
         [SerializeField] private T value;
 
+        public void Awake()
+        {
+        }
         
+        public void OnDestroy()
+        {
+        }
+
         private void OnEnable()
         {
+            RuntimeInstances.Register(this);
+            
             Debug.Log("BaseVariable::OnEnable: name is " + name);
             RuntimeInitialize();
             RaiseRuntimeInitializeEvent();
@@ -39,9 +54,12 @@ namespace Subsets.Message2.Runtime
         
         private void OnDisable()
         {
+            RuntimeInstances.Unregister(this);
+            
             Debug.Log("BaseVariable::OnDisable: name is " + name);
             RuntimeFinalize();
         }
+
 
         private void Reset()
         {

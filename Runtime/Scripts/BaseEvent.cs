@@ -6,21 +6,39 @@ using UnityEngine.Events;
 
 namespace Subsets.Message2.Runtime
 {
-    public class BaseEvent<T> : ScriptableObject, IRuntimeFinalization
+    public class BaseEvent<T> : ScriptableObject, IRuntimeInitialize
     {
         private readonly List<UnityAction<T>> eventListener = 
             new List<UnityAction<T>>();
         public T Variable;
-        
+
+        public void Awake()
+        {
+        }
+
+        public void OnDestroy()
+        {
+        }
+
         public void OnEnable()
         {
+            RuntimeInstances.Register(this);
         }
 
         public void OnDisable()
         {
+            RuntimeInstances.Unregister(this);
             RuntimeFinalize();
         }
-        
+
+        public void RuntimeInitialize()
+        {
+        }
+
+        public void RaiseRuntimeInitializeEvent()
+        {
+        }
+
         public void RuntimeFinalize()
         {
             eventListener.Clear();

@@ -4,5 +4,6 @@ namespace Subsets.Message2.Runtime
     {
         void RuntimeInitialize();
         void RaiseRuntimeInitializeEvent();
+        void RuntimeFinalize();
     }
 }

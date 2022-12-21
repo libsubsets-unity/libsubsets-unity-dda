@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Subsets.Message2.Runtime;
 using UnityEditor;
-using UnityEditor.Experimental;
 using UnityEngine;
 
 namespace Subsets.Message2.Editor
@@ -9,7 +9,7 @@ namespace Subsets.Message2.Editor
     public static class RuntimeInitializer
     {
         [InitializeOnLoadMethod]
-        public static void RegisterInitialize()
+        public static void RegisterChanged()
         {
             EditorApplication.playModeStateChanged -= OnStateChanged; 
             EditorApplication.playModeStateChanged += OnStateChanged; 
@@ -38,6 +38,14 @@ namespace Subsets.Message2.Editor
 
         public static void Initialize()
         {
+            HashSet<IRuntimeInitialize> instances = RuntimeInstances.GetInstances();
+            Debug.Log(String.Format("RuntimeInitializer::Initialize: Instance count: {0}", instances.Count));
+            foreach (IRuntimeInitialize instance in instances)
+            {
+                instance.RuntimeFinalize();
+                instance.RuntimeInitialize();
+            }
+            /*
             var guids = AssetDatabase.FindAssets("t:ScriptableObject");
             foreach (var guid in guids)
             {
@@ -48,17 +56,26 @@ namespace Subsets.Message2.Editor
                 IRuntimeInitialize initialize = asset as IRuntimeInitialize;
                 initialize?.RuntimeInitialize();
             }
+            */
         }
 
         public static void RaiseRuntimeInitialize()
         {
+            HashSet<IRuntimeInitialize> instances = RuntimeInstances.GetInstances();
+            Debug.Log(String.Format("RuntimeInitializer::RaiseRuntimeInitialize Instance count: {0}", instances.Count));
+            foreach (IRuntimeInitialize instance in instances)
+            {
+                instance.RaiseRuntimeInitializeEvent();
+            }
+            /*
             var guids = AssetDatabase.FindAssets("t:ScriptableObject");
             foreach (var guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 IRuntimeInitialize initialize = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path) as IRuntimeInitialize;
                 initialize?.RaiseRuntimeInitializeEvent();
-            }           
+            }          
+            */
         }
     }
 }
