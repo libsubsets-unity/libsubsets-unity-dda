@@ -47,7 +47,7 @@ namespace Subsets.Message2.Runtime
         {
             RuntimeInstances.Register(this);
             
-            Debug.Log("BaseVariable::OnEnable: name is " + name);
+            Debug.Log("BaseVariable::OnEnable: name is " + ( name.Length == 0 ? "dynamic_value:none": name));
             RuntimeInitialize();
             RaiseRuntimeInitializeEvent();
         }
@@ -56,7 +56,7 @@ namespace Subsets.Message2.Runtime
         {
             RuntimeInstances.Unregister(this);
             
-            Debug.Log("BaseVariable::OnDisable: name is " + name);
+            Debug.Log("BaseVariable::OnDisable: name is " + ( name.Length == 0 ? "dynamic_value:none": name));
             RuntimeFinalize();
         }
 
@@ -67,19 +67,20 @@ namespace Subsets.Message2.Runtime
 
         public virtual void RuntimeInitialize()
         {
-            Debug.Log("BaseVariable::RuntimeInitialize: name is " + name);
+            Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( name.Length == 0 ? "dynamic_value:none" : name));
             this.value = Clone(InitialValue);
         }
 
         public virtual void RaiseRuntimeInitializeEvent()
         {
-            Debug.Log("BaseVariable::RaiseRuntimeInitializeEvent: name is " + name);
+            Debug.Log("BaseVariable::RaiseRuntimeInitializeEvent: name is " +
+                      (name.Length == 0 ? "dynamic_value:none" : name));
             OnPropertyChanged("Value");
         }
 
         public virtual void RuntimeFinalize()
         {
-            Debug.Log("BaseVariable::RuntimeFinalize: name is " + name);
+            Debug.Log("BaseVariable::RuntimeFinalize: name is " + (name.Length == 0 ? "dynamic_value:none" : name));
             PropertyChanged = null;
         }
 

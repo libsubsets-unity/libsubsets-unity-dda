@@ -33,7 +33,7 @@ namespace Subsets.Message2.Runtime
                 variable = new StringKeyValue<StringVariable>();
                 variable.Key = id;
                 variable.Value = ScriptableObject.CreateInstance<StringVariable>();
-                variable.Value.name = String.Format("dynamic_value:{0}:{0}", name, id);
+                variable.Value.name = String.Format("dynamic_value:{0}:{1}", name, id);
                 Value.Add(variable);
             }
             return variable.Value;

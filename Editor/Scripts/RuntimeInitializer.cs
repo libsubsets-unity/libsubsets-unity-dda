@@ -45,18 +45,6 @@ namespace Subsets.Message2.Editor
                 instance.RuntimeFinalize();
                 instance.RuntimeInitialize();
             }
-            /*
-            var guids = AssetDatabase.FindAssets("t:ScriptableObject");
-            foreach (var guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                ScriptableObject asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path);
-                IRuntimeFinalization finalize = asset as IRuntimeFinalization;
-                finalize?.RuntimeFinalize();
-                IRuntimeInitialize initialize = asset as IRuntimeInitialize;
-                initialize?.RuntimeInitialize();
-            }
-            */
         }
 
         public static void RaiseRuntimeInitialize()
@@ -67,15 +55,6 @@ namespace Subsets.Message2.Editor
             {
                 instance.RaiseRuntimeInitializeEvent();
             }
-            /*
-            var guids = AssetDatabase.FindAssets("t:ScriptableObject");
-            foreach (var guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                IRuntimeInitialize initialize = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path) as IRuntimeInitialize;
-                initialize?.RaiseRuntimeInitializeEvent();
-            }          
-            */
         }
     }
 }
