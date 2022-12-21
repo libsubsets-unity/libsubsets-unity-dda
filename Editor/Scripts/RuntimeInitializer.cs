@@ -17,8 +17,9 @@ namespace Subsets.Message2.Editor
         
         static void OnStateChanged(PlayModeStateChange change)
         {
-            Debug.Log(String.Format("RuntimeInitializer::OnStateChanged: EnterPlayMode : {0}, Options:{1}, StateChanged: {2}",
-                EditorSettings.enterPlayModeOptionsEnabled, EditorSettings.enterPlayModeOptions.ToString(), change));
+            HashSet<IRuntimeInitialize> instances = RuntimeInstances.GetInstances();
+            Debug.Log(String.Format("RuntimeInitializer::OnStateChanged: EnterPlayMode : {0}, Options:{1}, StateChanged: {2}, Instances count: {3}",
+                EditorSettings.enterPlayModeOptionsEnabled, EditorSettings.enterPlayModeOptions.ToString(), change, instances.Count));
             if (EditorSettings.enterPlayModeOptionsEnabled &&
                 EditorSettings.enterPlayModeOptions.HasFlag(EnterPlayModeOptions.DisableDomainReload))
             {

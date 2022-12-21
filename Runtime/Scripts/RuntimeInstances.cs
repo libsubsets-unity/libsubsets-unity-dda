@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
@@ -9,11 +10,13 @@ namespace Subsets.Message2.Runtime
         public static void Register(IRuntimeInitialize instance)
         {
             instances.Add(instance);
+            Debug.Log("RuntimeInstances::Registered:: count: "+ instances.Count);
         }
 
         public static void Unregister(IRuntimeInitialize instance)
         {
             instances.Remove(instance);
+            Debug.Log("RuntimeInstances::Unregistered:: count: "+ instances.Count);
         }
 
         public static HashSet<IRuntimeInitialize> GetInstances()
