@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, IRuntimeFinalization
+    public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, IRuntimeFinalization, ISerializationCallbackReceiver
     {
         [Multiline]
         public string DeveloperDescription = "";
@@ -16,17 +16,19 @@ namespace Subsets.Message2.Runtime
             }
             set
             {
-                this.OldValue = Clone(this.value);
+                this.OldValue = this.value;
                 this.value = value;
                 OnPropertyChanged("Value");
             }
                     
         }
+
         public T InitialValue;
         public T OldValue;
         public event PropertyChangedEventHandler PropertyChanged;
 
         [SerializeField] private T value;
+
         
         private void OnEnable()
         {
@@ -41,18 +43,25 @@ namespace Subsets.Message2.Runtime
             RuntimeFinalize();
         }
 
+        private void Reset()
+        {
+        }
+
         public virtual void RuntimeInitialize()
         {
+            Debug.Log("BaseVariable::RuntimeInitialize: name is " + name);
             this.value = Clone(InitialValue);
         }
 
         public virtual void RaiseRuntimeInitializeEvent()
         {
+            Debug.Log("BaseVariable::RaiseRuntimeInitializeEvent: name is " + name);
             OnPropertyChanged("Value");
         }
 
         public virtual void RuntimeFinalize()
         {
+            Debug.Log("BaseVariable::RuntimeFinalize: name is " + name);
             PropertyChanged = null;
         }
 
@@ -61,6 +70,14 @@ namespace Subsets.Message2.Runtime
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public virtual void OnBeforeSerialize()
+        {
+        }
+        
+        public virtual void OnAfterDeserialize()
+        {
         }
     }
 }

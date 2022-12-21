@@ -1,3 +1,4 @@
+using System;
 using Subsets.Message2.Runtime;
 using UnityEditor;
 using UnityEditor.Experimental;
@@ -10,17 +11,19 @@ namespace Subsets.Message2.Editor
         [InitializeOnLoadMethod]
         public static void RegisterInitialize()
         {
+            EditorApplication.playModeStateChanged -= OnStateChanged; 
             EditorApplication.playModeStateChanged += OnStateChanged; 
         }
         
         static void OnStateChanged(PlayModeStateChange change)
         {
+            Debug.Log(String.Format("RuntimeInitializer::OnStateChanged: EnterPlayMode : {0}, Options:{1}, StateChanged: {2}",
+                EditorSettings.enterPlayModeOptionsEnabled, EditorSettings.enterPlayModeOptions.ToString(), change));
             if (EditorSettings.enterPlayModeOptionsEnabled &&
                 EditorSettings.enterPlayModeOptions.HasFlag(EnterPlayModeOptions.DisableDomainReload))
             {
-                if (change == PlayModeStateChange.ExitingPlayMode)
+                if (change == PlayModeStateChange.ExitingEditMode)
                 {
-                    //Occurs when exiting play mode, before the Editor is in edit mode
                     Initialize(); 
                 }
 
@@ -28,7 +31,7 @@ namespace Subsets.Message2.Editor
                 {
                     //This event is synchronized with the editor application's update loop,
                     //it may occur after the game's update loop has already executed one or more times
-                    Finalize(); 
+                    RaiseRuntimeInitialize(); 
                 }
             }
         }
@@ -39,14 +42,15 @@ namespace Subsets.Message2.Editor
             foreach (var guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                IRuntimeFinalization finalizae = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path) as IRuntimeFinalization;
-                finalizae?.RuntimeFinalize();
-                IRuntimeInitialize initialize = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path) as IRuntimeInitialize;
+                ScriptableObject asset = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path);
+                IRuntimeFinalization finalize = asset as IRuntimeFinalization;
+                finalize?.RuntimeFinalize();
+                IRuntimeInitialize initialize = asset as IRuntimeInitialize;
                 initialize?.RuntimeInitialize();
             }
         }
 
-        public static void Finalize()
+        public static void RaiseRuntimeInitialize()
         {
             var guids = AssetDatabase.FindAssets("t:ScriptableObject");
             foreach (var guid in guids)
