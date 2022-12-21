@@ -5,10 +5,6 @@ using UnityEngine;
 
 namespace Subsets.Message2.Runtime
 {
-    public class RuntimeInitializeInstances
-    {
-        public static List<IRuntimeInitialize> Instances;
-    }
     public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, ISerializationCallbackReceiver
     {
         
@@ -35,6 +31,8 @@ namespace Subsets.Message2.Runtime
 
         [SerializeField] private T value;
 
+        private string variableName;
+
         public void Awake()
         {
         }
@@ -45,9 +43,10 @@ namespace Subsets.Message2.Runtime
 
         private void OnEnable()
         {
+            this.variableName = name;
             RuntimeInstances.Register(this);
             
-            Debug.Log("BaseVariable::OnEnable: name is " + ( name.Length == 0 ? "dynamic_value:none": name));
+            Debug.Log("BaseVariable::OnEnable: name is " + ( variableName.Length == 0 ? "dynamic_value:none": variableName));
             RuntimeInitialize();
             RaiseRuntimeInitializeEvent();
         }
@@ -56,7 +55,7 @@ namespace Subsets.Message2.Runtime
         {
             RuntimeInstances.Unregister(this);
             
-            Debug.Log("BaseVariable::OnDisable: name is " + ( name.Length == 0 ? "dynamic_value:none": name));
+            Debug.Log("BaseVariable::OnDisable: name is " + ( variableName.Length == 0 ? "dynamic_value:none": variableName));
             RuntimeFinalize();
         }
 
@@ -67,20 +66,20 @@ namespace Subsets.Message2.Runtime
 
         public virtual void RuntimeInitialize()
         {
-            Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( name.Length == 0 ? "dynamic_value:none" : name));
+            Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( variableName.Length == 0 ? "dynamic_value:none" : variableName));
             this.value = Clone(InitialValue);
         }
 
         public virtual void RaiseRuntimeInitializeEvent()
         {
             Debug.Log("BaseVariable::RaiseRuntimeInitializeEvent: name is " +
-                      (name.Length == 0 ? "dynamic_value:none" : name));
+                      (variableName.Length == 0 ? "dynamic_value:none" : variableName));
             OnPropertyChanged("Value");
         }
 
         public virtual void RuntimeFinalize()
         {
-            Debug.Log("BaseVariable::RuntimeFinalize: name is " + (name.Length == 0 ? "dynamic_value:none" : name));
+            Debug.Log("BaseVariable::RuntimeFinalize: name is " + (variableName.Length == 0 ? "dynamic_value:none" : variableName));
             PropertyChanged = null;
         }
 
