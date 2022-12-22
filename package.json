@@ -1,7 +1,7 @@
 {
-  "name": "com.maayalee.libsubsets-unity-message2",
+  "name": "com.libsubsets.unity.soa",
   "version": "1.1.0",
-  "displayName": "Subsets Message2",
+  "displayName": "Library Subsets SoA",
   "keywords": [
     "Test",
     "test2"
@@ -13,7 +13,7 @@
   },
   "type": "library",
   "dependencies": {
-    "com.maayalee.libsubsets-unity-unitest": "1.0.1"
+    "com.libsubsets.unity.unittest": "1.0.1"
   },
-  "description": "Subset Message2"
+  "description": "Scriptable Object Architecture Implementation"
 }

@@ -1,9 +1,9 @@
-using Subsets.Message2.Runtime;
+using LibSubsets.SoA;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Event/Float")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/Float")]
     public class FloatEvent : BaseEvent<float>
     {
         

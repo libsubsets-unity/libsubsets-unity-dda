@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Event/StringVariable")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/StringVariable")]
     public class StringVariableEvent : BaseEvent<StringVariable>
     {
     }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Event/IntegerVariable")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/IntegerVariable")]
     public class IntegerVariableEvent : BaseEvent<IntegerVariable>
     {
     }

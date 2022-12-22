@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     public class CommandBinder : MonoBehaviour
     {

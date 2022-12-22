@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Event/LongVariable")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/LongVariable")]
     public class LongVariableEvent : BaseEvent<LongVariable>
     {
     }

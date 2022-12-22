@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     public static class RuntimeInstances
     {
         private static HashSet<IRuntimeInitialize> instances = new HashSet<IRuntimeInitialize>();
-        
+
         public static void Register(IRuntimeInitialize instance)
         {
             instances.Add(instance);

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     [Serializable]
     public class BoolKeyValue<T>
@@ -13,7 +13,7 @@ namespace Subsets.Message2.Runtime
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "Message2/Variable/BoolKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/BoolKeyValue")]
     public class BoolKeyValueVariable : BaseVariable<List<BoolKeyValue<BoolVariable>>>
     {
         protected override List<BoolKeyValue<BoolVariable>> Clone(List<BoolKeyValue<BoolVariable>> value)

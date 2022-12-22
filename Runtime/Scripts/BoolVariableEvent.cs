@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Event/BoolVariable")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/BoolVariable")]
     public class BoolVariableEvent : BaseEvent<BoolVariable>
     {
     }

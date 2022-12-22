@@ -1,8 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using Subsets.Message2.Runtime;
+using LibSubsets.SoA;
 
-namespace Subsets.Message2.Editor
+namespace LibSubsets.SoA.Editor
 {
     [CustomEditor(typeof(BoolVariable), editorForChildClasses: true)]
     public class BoolVariableEditor : UnityEditor.Editor

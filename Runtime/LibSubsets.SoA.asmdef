@@ -1,6 +1,5 @@
 {
-    "name": "Subsets.Message2",
-    "rootNamespace": "",
+    "name": "LibSubsets.SoA",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

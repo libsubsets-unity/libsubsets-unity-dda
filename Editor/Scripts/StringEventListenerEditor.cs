@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using Subsets.Message2.Runtime;
+using LibSubsets.SoA;
 
-namespace Subsets.Message2.Editor
+namespace LibSubsets.SoA.Editor
 {
     [CustomEditor(typeof(StringEventListener))]
     public class StringEventListenerEditor : UnityEditor.Editor

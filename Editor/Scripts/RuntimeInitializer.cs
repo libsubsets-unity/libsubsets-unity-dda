@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
-using Subsets.Message2.Runtime;
+using System.Linq;
+using LibSubsets.SoA;
 using UnityEditor;
 using UnityEngine;
 
-namespace Subsets.Message2.Editor
+namespace LibSubsets.SoA.Editor
 {
+    
+    
     public static class RuntimeInitializer
     {
         [InitializeOnLoadMethod]
@@ -25,14 +28,19 @@ namespace Subsets.Message2.Editor
             {
                 if (change == PlayModeStateChange.ExitingEditMode)
                 {
+                    RuntimeInitializerSettings.Transit(RuntimeInitializerState.Initializing);
                     Initialize(); 
                 }
-
                 else if (change == PlayModeStateChange.EnteredPlayMode)
                 {
                     //This event is synchronized with the editor application's update loop,
                     //it may occur after the game's update loop has already executed one or more times
                     RaiseRuntimeInitialize(); 
+                    RuntimeInitializerSettings.Transit(RuntimeInitializerState.Initialized);
+                }
+                else if (change == PlayModeStateChange.ExitingPlayMode)
+                {
+                    RuntimeInitializerSettings.Transit(RuntimeInitializerState.Disable);
                 }
             }
         }

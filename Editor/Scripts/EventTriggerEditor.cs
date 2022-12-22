@@ -1,4 +1,4 @@
-using Subsets.Message2.Runtime;
+using LibSubsets.SoA;
 using UnityEditor;
 using UnityEngine;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine.Events;
 
-namespace Subsets.Message2.Editor
+namespace LibSubsets.SoA.Editor
 {
     public class BindableEvent
     {

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Variable/GameEvent")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/GameEvent")]
     public class GameEventVariable : BaseVariable<GameEvent>
     {
         protected override GameEvent Clone(GameEvent value)

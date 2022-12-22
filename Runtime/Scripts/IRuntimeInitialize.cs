@@ -1,4 +1,4 @@
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     public interface IRuntimeInitialize
     {

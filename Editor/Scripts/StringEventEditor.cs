@@ -1,8 +1,8 @@
-﻿using Subsets.Message2.Runtime;
+﻿using LibSubsets.SoA;
 using UnityEditor;
 using UnityEngine;
 
-namespace Subsets.Message2.Editor
+namespace LibSubsets.SoA.Editor
 {
     [CustomEditor(typeof(StringEvent), editorForChildClasses: true)]
     public class StringEventEditor : UnityEditor.Editor

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "Message2/Variable/Long")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/Long")]
     public class LongVariable : BaseVariable<long>
     {
         protected override long Clone(long value)

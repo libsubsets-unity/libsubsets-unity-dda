@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     [Serializable]
     public class LongKeyValue<T>
@@ -13,7 +13,7 @@ namespace Subsets.Message2.Runtime
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "Message2/Variable/LongKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/LongKeyValue")]
     public class LongKeyValueVariable : BaseVariable<List<LongKeyValue<LongVariable>>>
     {
         protected override List<LongKeyValue<LongVariable>> Clone(List<LongKeyValue<LongVariable>> value)

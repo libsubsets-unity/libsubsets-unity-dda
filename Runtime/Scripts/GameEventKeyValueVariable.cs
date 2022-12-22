@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     [Serializable]
     public class GameEventKeyValue<T>
@@ -13,7 +13,7 @@ namespace Subsets.Message2.Runtime
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "Message2/Variable/GameEventKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/GameEventKeyValue")]
     public class GameEventKeyValueVariable : BaseVariable<List<GameEventKeyValue<GameEventVariable>>>
     {
         protected override List<GameEventKeyValue<GameEventVariable>> Clone(List<GameEventKeyValue<GameEventVariable>> value)

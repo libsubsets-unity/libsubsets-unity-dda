@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Subsets.Message2.Runtime
+namespace LibSubsets.SoA
 {
     public class LongVariableTrigger : MonoBehaviour
     {

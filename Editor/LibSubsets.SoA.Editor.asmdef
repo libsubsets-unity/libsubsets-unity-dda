@@ -1,8 +1,8 @@
 {
-    "name": "Subsets.Message2.Editor",
-    "rootNamespace": "",
+    "name": "LibSubsets.SoA.Editor",
     "references": [
-        "GUID:b05be729708c72746a5f36e9c58782d5"
+        "GUID:b05be729708c72746a5f36e9c58782d5",
+        "SoA"
     ],
     "includePlatforms": [
         "Editor"
