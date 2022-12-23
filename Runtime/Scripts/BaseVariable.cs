@@ -22,14 +22,27 @@ namespace LibSubsets.SoA
                 this.value = value;
                 OnPropertyChanged("Value");
             }
-                    
         }
 
-        public T InitialValue;
-        public T OldValue;
+        public T InitialValue
+        {
+            get
+            {
+               return this.initialValue;
+            }
+            set
+            {
+                this.InitialValue = value;
+                OnPropertyChanged("InitialValue");
+            }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [SerializeField] private T initialValue;
         [SerializeField] private T value;
+        [NonSerialized]
+        public T OldValue;
 
         private string variableName;
 
@@ -67,7 +80,10 @@ namespace LibSubsets.SoA
         public virtual void RuntimeInitialize()
         {
             Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( variableName.Length == 0 ? "dynamic_value:none" : variableName));
-            this.value = Clone(InitialValue);
+            if (initialValue != null)
+            {
+                this.value = Clone(initialValue);
+            }
         }
 
         public virtual void RaiseRuntimeInitializeEvent()
@@ -85,11 +101,11 @@ namespace LibSubsets.SoA
 
         protected abstract T Clone(T value);
 
-        private void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        
         public virtual void OnBeforeSerialize()
         {
         }

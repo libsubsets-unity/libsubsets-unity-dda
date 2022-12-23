@@ -2,7 +2,7 @@
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/Bool")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/BoolEvent")]
     public class BoolEvent : BaseEvent<bool>
     {
     }

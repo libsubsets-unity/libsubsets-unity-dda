@@ -17,7 +17,7 @@ namespace LibSubsets.SoA
         private void OnEnable()
         {
         }
-        public void Awake()
+        public void Start()
         {
             Variable.PropertyChanged += OnExecute;
         }

@@ -11,7 +11,7 @@ namespace LibSubsets.SoA
         
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/Game")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/GameEvent")]
     public class GameEvent : BaseEvent<Void>
     {
     }

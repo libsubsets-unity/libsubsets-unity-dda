@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/StringKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/StringKeyValueVariable")]
     public class StringKeyValueVariable : BaseVariable<List<StringKeyValue<StringVariable>>>
     {
         protected override List<StringKeyValue<StringVariable>> Clone(List<StringKeyValue<StringVariable>> value)

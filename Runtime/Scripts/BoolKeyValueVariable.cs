@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/BoolKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/BoolKeyValue")]
     public class BoolKeyValueVariable : BaseVariable<List<BoolKeyValue<BoolVariable>>>
     {
         protected override List<BoolKeyValue<BoolVariable>> Clone(List<BoolKeyValue<BoolVariable>> value)

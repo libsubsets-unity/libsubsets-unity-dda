@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
        
         public List<LongCondition> Conditions;
         public UnityEvent<LongVariable> Listeners;
-        public void Awake()
+        public void Start()
         {
             Variable.PropertyChanged += OnExecute;
         }

@@ -2,7 +2,7 @@
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/String")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/StringEvent")]
     public class StringEvent : BaseEvent<string>
     {
     }

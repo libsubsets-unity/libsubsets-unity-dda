@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/GameEventKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/GameEventKeyValue")]
     public class GameEventKeyValueVariable : BaseVariable<List<GameEventKeyValue<GameEventVariable>>>
     {
         protected override List<GameEventKeyValue<GameEventVariable>> Clone(List<GameEventKeyValue<GameEventVariable>> value)

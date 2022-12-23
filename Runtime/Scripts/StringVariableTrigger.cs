@@ -22,8 +22,9 @@ namespace LibSubsets.SoA
         public List<StringCondition> Conditions = new List<StringCondition>();
         public UnityEvent Listeners;
 
-        public void Awake()
+        public void Start()
         {
+            Debug.Log("StringVariableTrigger::Start:: conditions: " + JsonUtility.ToJson(Conditions));
             foreach (StringCondition condition in Conditions)
             {
                 if (condition.Trigger)

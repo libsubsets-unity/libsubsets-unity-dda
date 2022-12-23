@@ -16,8 +16,9 @@ namespace LibSubsets.SoA
         public static UnityEvent<RuntimeInitializerState> StateChanged = new UnityEvent<RuntimeInitializerState>();
         
         public static RuntimeInitializerState State = RuntimeInitializerState.Disable;
-
-        public static void Update()
+        
+        [RuntimeInitializeOnLoadMethod]
+        public static void Initialize()
         {
             if (State == RuntimeInitializerState.Disable)
             {

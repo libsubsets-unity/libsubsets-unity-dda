@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/Float")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/FloatVariable")]
     public class FloatVariable : BaseVariable<float>
     {
         protected override float Clone(float value)

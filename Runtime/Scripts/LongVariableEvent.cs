@@ -2,7 +2,7 @@
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/LongVariable")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/LongVariableEvent")]
     public class LongVariableEvent : BaseEvent<LongVariable>
     {
     }

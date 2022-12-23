@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace LibSubsets.SoA 
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/GameObject")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/GameObjectEvent")]
     public class GameObjectEvent : BaseEvent<GameObject>
     {
     }

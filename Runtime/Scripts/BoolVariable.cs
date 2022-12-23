@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/Bool")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/BoolVariable")]
     public class BoolVariable : BaseVariable<bool>
     {
         protected override bool Clone(bool value)

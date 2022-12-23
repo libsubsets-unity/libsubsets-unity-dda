@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/String")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/StringVariable")]
     public class StringVariable : BaseVariable<string>
     {
         protected override string Clone(string value)

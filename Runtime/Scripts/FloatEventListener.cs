@@ -14,7 +14,7 @@ namespace LibSubsets.SoA
     public class FloatCondition
     {
         public FloatCompare Compare;
-        public int Value;
+        public float Value;
     }
     
     public class FloatEventListener : BaseEventListener<float>

@@ -14,7 +14,7 @@ namespace LibSubsets.SoA
        
         public List<IntegerCondition> Conditions;
         public UnityEvent<IntegerVariable> Listeners;
-        public void Awake()
+        public void Start()
         {
             Variable.PropertyChanged += OnExecute;
         }

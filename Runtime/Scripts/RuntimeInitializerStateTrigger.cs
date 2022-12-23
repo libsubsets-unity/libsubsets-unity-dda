@@ -17,7 +17,6 @@ namespace LibSubsets.SoA
 
         public void Start()
         {
-            RuntimeInitializerSettings.Update();
         }
 
         public void OnDestroy()

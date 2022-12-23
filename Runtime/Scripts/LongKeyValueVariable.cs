@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/LongKeyValue")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/LongKeyValueVariable")]
     public class LongKeyValueVariable : BaseVariable<List<LongKeyValue<LongVariable>>>
     {
         protected override List<LongKeyValue<LongVariable>> Clone(List<LongKeyValue<LongVariable>> value)

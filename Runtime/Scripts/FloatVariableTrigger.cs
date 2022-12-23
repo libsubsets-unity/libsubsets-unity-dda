@@ -17,7 +17,7 @@ namespace LibSubsets.SoA
         public List<FloatCondition> Conditions;
         public UnityEvent<FloatVariable> Listeners;
         
-        private void Awake()
+        private void Start()
         {
             Variable.PropertyChanged += OnExecute;
         }

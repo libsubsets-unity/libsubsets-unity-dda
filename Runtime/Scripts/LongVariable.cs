@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/Long")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/LongVariable")]
     public class LongVariable : BaseVariable<long>
     {
         protected override long Clone(long value)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Variable/GameEvent")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/GameEventVariable")]
     public class GameEventVariable : BaseVariable<GameEvent>
     {
         protected override GameEvent Clone(GameEvent value)

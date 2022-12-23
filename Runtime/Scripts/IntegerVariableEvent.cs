@@ -2,7 +2,7 @@
 
 namespace LibSubsets.SoA
 {
-    [CreateAssetMenu(menuName = "LibSubsets/SOArchitecture/Event/IntegerVariable")]
+    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/IntegerVariableEvent")]
     public class IntegerVariableEvent : BaseEvent<IntegerVariable>
     {
     }
