@@ -16,10 +16,11 @@ namespace LibSubsets.SoA
         public static UnityEvent<RuntimeInitializerState> StateChanged = new UnityEvent<RuntimeInitializerState>();
         
         public static RuntimeInitializerState State = RuntimeInitializerState.Disable;
-        
+       
         [RuntimeInitializeOnLoadMethod]
         public static void Initialize()
         {
+            Debug.Log("RuntimeInitializerSettings::Initialize: State: " + State);
             if (State == RuntimeInitializerState.Disable)
             {
                 Transit(RuntimeInitializerState.Initialized);

@@ -7,72 +7,36 @@ using UnityEngine.Events;
 
 namespace LibSubsets.SoA
 {
-    public class StringVariableTrigger : MonoBehaviour
+    [Serializable]
+    public class StringVariableCondition : BaseCondition<StringVariable, string>
     {
-        [Serializable]
-        public class StringCondition
-        {
-            public StringVariable Variable;
-            public StringCompare Compare;
-            public string Value;
-            public bool Trigger = true;
-        }
+        public StringCompare Compare;
+        public string Value;
+    }
+    public class StringVariableTrigger : BaseTrigger<StringVariableCondition, StringVariable, string>
+    {
+        
 
         public ResponseConditionOperator ConditionOperator;
-        public List<StringCondition> Conditions = new List<StringCondition>();
-        public UnityEvent Listeners;
 
-        public void Start()
-        {
-            Debug.Log("StringVariableTrigger::Start:: conditions: " + JsonUtility.ToJson(Conditions));
-            foreach (StringCondition condition in Conditions)
-            {
-                if (condition.Trigger)
-                {
-                    condition.Variable.PropertyChanged += OnExecute;
-                }
-                
-            }
-        }
-
-        public void OnDestroy()
-        {
-            foreach (StringCondition condition in Conditions)
-            {
-                if (condition.Trigger)
-                {
-                    condition.Variable.PropertyChanged -= OnExecute;
-                }
-            }
-        }
-
-        private void OnExecute(object sender, PropertyChangedEventArgs args)
-        {
-            Execute();
-        }
-
-        private void OnEnable()
-        {
-        }
-
-        private void Execute()
+        protected override bool MatchCondition()
         {
             if (enabled)
             {
                 ConditionCompareResult result = new ConditionCompareResult();
-                foreach (StringCondition condition in Conditions)
+                foreach (StringVariableCondition condition in Conditions)
                 {
                     if (condition.Compare == StringCompare.Equal)
                     {
-                        result.Add(condition.Variable.Value.Equals(condition.Value));
+                        result.Add(condition.Target.Value.Equals(condition.Value));
                     }
                     else if (condition.Compare == StringCompare.Contains)
                     {
-                        result.Add(condition.Variable.Value.Contains(condition.Value));
+                        result.Add(condition.Target.Value.Contains(condition.Value));
                     }
                     else if (condition.Compare == StringCompare.IsNot)
                     {
-                        result.Add(!condition.Variable.Value.Equals(condition.Value));
+                        result.Add(!condition.Target.Value.Equals(condition.Value));
                     }
                     else if (condition.Compare == StringCompare.Updated)
                     {
@@ -85,6 +49,8 @@ namespace LibSubsets.SoA
                     Listeners?.Invoke();
                 }
             }
+
+            return false;
         }
     }
 }

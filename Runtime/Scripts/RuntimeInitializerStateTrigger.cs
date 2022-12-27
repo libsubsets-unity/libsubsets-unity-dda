@@ -15,10 +15,6 @@ namespace LibSubsets.SoA
             RuntimeInitializerSettings.StateChanged.AddListener(OnStateChanged);
         }
 
-        public void Start()
-        {
-        }
-
         public void OnDestroy()
         {
             RuntimeInitializerSettings.StateChanged.RemoveListener(OnStateChanged);

@@ -7,66 +7,37 @@ using UnityEngine.Events;
 
 namespace LibSubsets.SoA
 {
-    public class BoolVariableTrigger : MonoBehaviour
+    [Serializable]
+    public class BoolVariableCondition : BaseCondition<BoolVariable, bool>
     {
-        public BoolVariable Variable;
-        public BoolCondition Condition;
-        public bool StopWhenConditionMatched;
-        public UnityEvent<BoolVariable> Listeners;
-       
-        private void OnEnable()
-        {
-        }
-        public void Start()
-        {
-            Variable.PropertyChanged += OnExecute;
-        }
-
-        private void OnDestroy()
-        {
-            Variable.PropertyChanged -= OnExecute;
-        }
-
-        private void OnExecute(object sender, PropertyChangedEventArgs args)
-        {
-            Execute();
-        }
-
-        private void Execute()
+        public BoolCompare Compare;
+        public string Value;
+    }
+    public class BoolVariableTrigger : BaseTrigger<BoolVariableCondition, BoolVariable, bool>
+    {
+        protected override bool MatchCondition()
         {
             if (enabled)
             {
-                if (Condition.Compare == BoolCompare.IsTrue)
+                bool matched = false;
+                foreach (BoolVariableCondition condition in Conditions)
                 {
-                    if (Variable.Value == true)
+                    if (condition.Compare == BoolCompare.IsTrue)
                     {
-                        Listeners.Invoke(Variable);
-                        if (StopWhenConditionMatched)
-                        {
-                            enabled = false;
-                        }
+                        matched = condition.Target == true;
                     }
-                }
-                else if (Condition.Compare == BoolCompare.IsFalse)
-                {
-                    if (Variable.Value == false)
+                    else if (condition.Compare == BoolCompare.IsFalse)
                     {
-                        Listeners.Invoke(Variable);
-                        if (StopWhenConditionMatched)
-                        {
-                            enabled = false;
-                        }
+                        matched = condition.Target == false;
                     }
-                }
-                else if(Condition.Compare == BoolCompare.Updated)
-                {
-                    Listeners.Invoke(Variable);
-                    if (StopWhenConditionMatched)
+                    else if(condition.Compare == BoolCompare.Updated)
                     {
-                        enabled = false;
-                    }
+                        matched = true;
+                    }    
                 }
-            }           
+                return matched;
+            }
+            return false;
         }
     }
 }
