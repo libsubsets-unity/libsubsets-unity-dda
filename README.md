@@ -2,4 +2,4 @@ Subset DDA(Data Driven Architecture) was created with ideas from Game Archirectu
 
 https://github.com/roboryantron/Unite2017
 
-And I Referenced the [Unity Atoms(https://github.com/unity-atoms/unity-atoms)] project.
+And I Referenced the [Unity Atoms](https://github.com/unity-atoms/unity-atoms) project.
