@@ -32,7 +32,7 @@ namespace LibSubsets.SoA
             }
             set
             {
-                this.InitialValue = value;
+                this.initialValue = value;
                 OnPropertyChanged("InitialValue");
             }
         }

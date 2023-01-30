@@ -1,7 +1,7 @@
 {
-  "name": "com.libsubsets.unity.soa",
+  "name": "com.libsubsets.unity.dda",
   "version": "1.1.0",
-  "displayName": "Library Subsets SoA",
+  "displayName": "Subsets DDA",
   "keywords": [
     "Test",
     "test2"
@@ -15,5 +15,5 @@
   "dependencies": {
     "com.libsubsets.unity.unittest": "1.0.1"
   },
-  "description": "Scriptable Object Architecture Implementation"
+  "description": ""
 }
