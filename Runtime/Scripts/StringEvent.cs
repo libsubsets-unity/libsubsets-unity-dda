@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/StringEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/StringEvent")]
     public class StringEvent : BaseEvent<string>
     {
     }

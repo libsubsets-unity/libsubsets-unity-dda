@@ -1,9 +1,9 @@
-using LibSubsets.SoA;
+using Subsets.Dda;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/FloatEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/FloatEvent")]
     public class FloatEvent : BaseEvent<float>
     {
         

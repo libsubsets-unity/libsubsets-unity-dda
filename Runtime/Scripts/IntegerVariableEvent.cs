@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/IntegerVariableEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/IntegerVariableEvent")]
     public class IntegerVariableEvent : BaseEvent<IntegerVariable>
     {
     }

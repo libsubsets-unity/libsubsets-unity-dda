@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/FloatVariable")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Variable/FloatVariable")]
     public class FloatVariable : BaseVariable<float>
     {
         protected override float Clone(float value)

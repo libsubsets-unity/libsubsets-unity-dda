@@ -5,7 +5,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     [Serializable]
     public class StringVariableCondition : BaseCondition<StringVariable, string>

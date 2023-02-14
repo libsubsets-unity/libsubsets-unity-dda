@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/LongVariableEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/LongVariableEvent")]
     public class LongVariableEvent : BaseEvent<LongVariable>
     {
     }

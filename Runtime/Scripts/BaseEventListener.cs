@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA 
+namespace Subsets.Dda 
 {
     public class BaseEventListener<T> : MonoBehaviour
     {

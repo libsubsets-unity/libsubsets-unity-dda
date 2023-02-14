@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     [Serializable]
     public class StringKeyValue<T>
@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/StringKeyValueVariable")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Variable/StringKeyValueVariable")]
     public class StringKeyValueVariable : BaseVariable<List<StringKeyValue<StringVariable>>>
     {
         protected override List<StringKeyValue<StringVariable>> Clone(List<StringKeyValue<StringVariable>> value)

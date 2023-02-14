@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using LibSubsets.SoA;
+using Subsets.Dda;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public class FloatVariableTrigger : MonoBehaviour 
     {

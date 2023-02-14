@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public static class RuntimeInstances
     {

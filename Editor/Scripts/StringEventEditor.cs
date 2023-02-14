@@ -1,8 +1,8 @@
-﻿using LibSubsets.SoA;
+﻿using Subsets.Dda;
 using UnityEditor;
 using UnityEngine;
 
-namespace LibSubsets.SoA.Editor
+namespace Subsets.Dda.Editor
 {
     [CustomEditor(typeof(StringEvent), editorForChildClasses: true)]
     public class StringEventEditor : UnityEditor.Editor

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA 
+namespace Subsets.Dda 
 {
     [Serializable]
     public struct Void
@@ -11,7 +11,7 @@ namespace LibSubsets.SoA
         
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/GameEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/GameEvent")]
     public class GameEvent : BaseEvent<Void>
     {
     }

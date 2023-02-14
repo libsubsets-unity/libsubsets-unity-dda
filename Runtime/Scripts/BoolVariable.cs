@@ -4,9 +4,9 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/BoolVariable")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Variable/BoolVariable")]
     public class BoolVariable : BaseVariable<bool>
     {
         protected override bool Clone(bool value)

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA 
+namespace Subsets.Dda 
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/GameObjectEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/GameObjectEvent")]
     public class GameObjectEvent : BaseEvent<GameObject>
     {
     }

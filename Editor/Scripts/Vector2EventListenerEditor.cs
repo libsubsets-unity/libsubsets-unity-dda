@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using LibSubsets.SoA;
+using Subsets.Dda;
 
-namespace LibSubsets.SoA.Editor
+namespace Subsets.Dda.Editor
 {
     [CustomEditor(typeof(Vector2EventListener))]
     public class Vector2EventListenerEditor : UnityEditor.Editor

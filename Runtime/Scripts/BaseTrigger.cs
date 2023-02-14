@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     [Serializable]
     public abstract class BaseCondition<TVariable, TType> where TVariable : BaseVariable<TType>

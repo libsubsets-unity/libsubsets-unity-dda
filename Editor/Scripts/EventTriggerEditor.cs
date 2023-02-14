@@ -1,4 +1,4 @@
-using LibSubsets.SoA;
+using Subsets.Dda;
 using UnityEditor;
 using UnityEngine;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA.Editor
+namespace Subsets.Dda.Editor
 {
     public class BindableEvent
     {

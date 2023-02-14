@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     [Serializable]
     public class BoolKeyValue<T>
@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/BoolKeyValue")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Variable/BoolKeyValue")]
     public class BoolKeyValueVariable : BaseVariable<List<BoolKeyValue<BoolVariable>>>
     {
         protected override List<BoolKeyValue<BoolVariable>> Clone(List<BoolKeyValue<BoolVariable>> value)

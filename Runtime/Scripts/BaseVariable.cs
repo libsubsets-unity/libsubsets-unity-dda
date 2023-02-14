@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public abstract class BaseVariable<T> : ScriptableObject, INotifyPropertyChanged, IRuntimeInitialize, ISerializationCallbackReceiver
     {
@@ -44,7 +44,7 @@ namespace LibSubsets.SoA
         [NonSerialized]
         public T OldValue;
 
-        private string variableName;
+        private string valueName;
 
         public void Awake()
         {
@@ -56,20 +56,20 @@ namespace LibSubsets.SoA
 
         private void OnEnable()
         {
-            this.variableName = name;
-            RuntimeInstances.Register(this);
+            this.valueName = name;
+            Debug.Log("BaseVariable::OnEnable: name is " + ( valueName.Length == 0 ? "none": valueName));
             
-            Debug.Log("BaseVariable::OnEnable: name is " + ( variableName.Length == 0 ? "dynamic_value:none": variableName));
+            RuntimeInstances.Register(this);
             RuntimeInitialize();
             RaiseRuntimeInitializeEvent();
         }
         
         private void OnDisable()
         {
-            RuntimeInstances.Unregister(this);
+            Debug.Log("BaseVariable::OnDisable: name is " + ( valueName.Length == 0 ? "none": valueName));
             
-            Debug.Log("BaseVariable::OnDisable: name is " + ( variableName.Length == 0 ? "dynamic_value:none": variableName));
             RuntimeFinalize();
+            RuntimeInstances.Unregister(this);
         }
 
 
@@ -79,7 +79,7 @@ namespace LibSubsets.SoA
 
         public virtual void RuntimeInitialize()
         {
-            Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( variableName.Length == 0 ? "dynamic_value:none" : variableName));
+            Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( valueName.Length == 0 ? "none" : valueName));
             if (initialValue != null)
             {
                 this.value = Clone(initialValue);
@@ -89,13 +89,13 @@ namespace LibSubsets.SoA
         public virtual void RaiseRuntimeInitializeEvent()
         {
             Debug.Log("BaseVariable::RaiseRuntimeInitializeEvent: name is " +
-                      (variableName.Length == 0 ? "dynamic_value:none" : variableName));
+                      (valueName.Length == 0 ? "none" : valueName));
             OnPropertyChanged("Value");
         }
 
         public virtual void RuntimeFinalize()
         {
-            Debug.Log("BaseVariable::RuntimeFinalize: name is " + (variableName.Length == 0 ? "dynamic_value:none" : variableName));
+            Debug.Log("BaseVariable::RuntimeFinalize: name is " + (valueName.Length == 0 ? "none" : valueName));
             PropertyChanged = null;
         }
 

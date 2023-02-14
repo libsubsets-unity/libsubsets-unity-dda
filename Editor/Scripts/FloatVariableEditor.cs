@@ -1,8 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using LibSubsets.SoA;
+using Subsets.Dda;
 
-namespace LibSubsets.SoA.Editor
+namespace Subsets.Dda.Editor
 {
     [CustomEditor(typeof(FloatVariable), editorForChildClasses: true)]
     public class VariableEditor : UnityEditor.Editor

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LibSubsets.SoA;
+using Subsets.Dda;
 using UnityEditor;
 using UnityEngine;
 
-namespace LibSubsets.SoA.Editor
+namespace Subsets.Dda.Editor
 {
     
     

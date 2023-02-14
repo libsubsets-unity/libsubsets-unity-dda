@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public class CommandBinder : MonoBehaviour
     {

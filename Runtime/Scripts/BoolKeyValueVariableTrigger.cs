@@ -5,7 +5,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public class BoolKeyValueVariableTrigger : MonoBehaviour
     {

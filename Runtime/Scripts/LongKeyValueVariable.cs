@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     [Serializable]
     public class LongKeyValue<T>
@@ -13,7 +13,7 @@ namespace LibSubsets.SoA
         public T Value;
     }
     
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/LongKeyValueVariable")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Variable/LongKeyValueVariable")]
     public class LongKeyValueVariable : BaseVariable<List<LongKeyValue<LongVariable>>>
     {
         protected override List<LongKeyValue<LongVariable>> Clone(List<LongKeyValue<LongVariable>> value)

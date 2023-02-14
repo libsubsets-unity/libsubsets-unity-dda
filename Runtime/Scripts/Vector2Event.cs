@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/Vector2Event")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/Vector2Event")]
     public class Vector2Event : BaseEvent<Vector2>
     {
     }

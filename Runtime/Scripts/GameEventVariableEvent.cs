@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/GameEventVariableEvent")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/GameEventVariableEvent")]
     public class GameEventVariableEvent : BaseEvent<GameEventVariable>
     {
     }

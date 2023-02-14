@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LibSubsets.SoA 
+namespace Subsets.Dda 
 {
     public enum FloatCompare
     {

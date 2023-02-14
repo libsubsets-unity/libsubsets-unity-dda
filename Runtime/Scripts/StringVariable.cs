@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Variable/StringVariable")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Variable/StringVariable")]
     public class StringVariable : BaseVariable<string>
     {
         protected override string Clone(string value)

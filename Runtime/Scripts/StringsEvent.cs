@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
-    [CreateAssetMenu(menuName = "LibSubsets.SoA/Event/String(s)Event")]
+    [CreateAssetMenu(menuName = "Subsets.Dda/Event/String(s)Event")]
     public class StringsEvent : BaseEvent<List<string>>
     {
     }

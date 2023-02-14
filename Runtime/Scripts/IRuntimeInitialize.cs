@@ -1,4 +1,4 @@
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public interface IRuntimeInitialize
     {

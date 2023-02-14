@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibSubsets.SoA;
+using Subsets.Dda;
 using UnityEditor;
 using UnityEngine;
 
-namespace LibSubsets.SoA.Editor
+namespace Subsets.Dda.Editor
 {
     [CustomEditor(typeof(BoolEventListener))]
     public class BoolEventListenerEditor : UnityEditor.Editor

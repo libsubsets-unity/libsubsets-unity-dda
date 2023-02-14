@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace LibSubsets.SoA
+namespace Subsets.Dda
 {
     public class PropertyBinder : MonoBehaviour
     {
