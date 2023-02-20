@@ -82,7 +82,7 @@ namespace Subsets.Dda
             Debug.Log("BaseVariable::RuntimeInitialize: name is " + ( valueName.Length == 0 ? "none" : valueName));
             if (initialValue != null)
             {
-                this.value = Clone(initialValue);
+                this.value = DuplicateValue(initialValue);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Subsets.Dda
             PropertyChanged = null;
         }
 
-        protected abstract T Clone(T value);
+        protected abstract T DuplicateValue(T value);
 
         protected void OnPropertyChanged(string propertyName)
         {

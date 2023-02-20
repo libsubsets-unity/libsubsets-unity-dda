@@ -9,7 +9,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/BoolVariable")]
     public class BoolVariable : BaseVariable<bool>
     {
-        protected override bool Clone(bool value)
+        protected override bool DuplicateValue(bool value)
         {
             return value;
         }

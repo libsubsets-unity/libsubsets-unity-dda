@@ -8,7 +8,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/FloatVariable")]
     public class FloatVariable : BaseVariable<float>
     {
-        protected override float Clone(float value)
+        protected override float DuplicateValue(float value)
         {
             return value;
         }

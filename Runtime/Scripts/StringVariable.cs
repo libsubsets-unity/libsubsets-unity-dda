@@ -7,7 +7,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/StringVariable")]
     public class StringVariable : BaseVariable<string>
     {
-        protected override string Clone(string value)
+        protected override string DuplicateValue(string value)
         {
             return value;
         }

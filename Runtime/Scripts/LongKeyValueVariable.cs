@@ -16,7 +16,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/LongKeyValueVariable")]
     public class LongKeyValueVariable : BaseVariable<List<LongKeyValue<LongVariable>>>
     {
-        protected override List<LongKeyValue<LongVariable>> Clone(List<LongKeyValue<LongVariable>> value)
+        protected override List<LongKeyValue<LongVariable>> DuplicateValue(List<LongKeyValue<LongVariable>> value)
         {
             if (null == value)
             {

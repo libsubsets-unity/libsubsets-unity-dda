@@ -7,7 +7,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/IntegerVariable")]
     public class IntegerVariable : BaseVariable<int>
     {
-        protected override int Clone(int value)
+        protected override int DuplicateValue(int value)
         {
             return value;
         }

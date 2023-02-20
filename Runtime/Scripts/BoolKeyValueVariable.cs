@@ -16,7 +16,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/BoolKeyValue")]
     public class BoolKeyValueVariable : BaseVariable<List<BoolKeyValue<BoolVariable>>>
     {
-        protected override List<BoolKeyValue<BoolVariable>> Clone(List<BoolKeyValue<BoolVariable>> value)
+        protected override List<BoolKeyValue<BoolVariable>> DuplicateValue(List<BoolKeyValue<BoolVariable>> value)
         {
             if (null == value)
             {

@@ -16,7 +16,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/StringsKeyValueVariable")]
     public class StringsKeyValueVariable : BaseVariable<List<StringsKeyValue<StringsVariable>>>
     {
-        protected override List<StringsKeyValue<StringsVariable>> Clone(List<StringsKeyValue<StringsVariable>> value)
+        protected override List<StringsKeyValue<StringsVariable>> DuplicateValue(List<StringsKeyValue<StringsVariable>> value)
         {
             if (null == value)
             {

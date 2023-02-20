@@ -46,7 +46,8 @@ namespace Subsets.Dda
 
                 if (result.CheckConditionOperator(ConditionOperator))
                 {
-                    Listeners?.Invoke();
+                    //Listeners?.Invoke();
+                    return true;
                 }
             }
 

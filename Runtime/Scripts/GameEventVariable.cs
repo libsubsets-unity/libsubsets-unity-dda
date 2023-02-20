@@ -7,7 +7,7 @@ namespace Subsets.Dda
     [CreateAssetMenu(menuName = "Subsets.Dda/Variable/GameEventVariable")]
     public class GameEventVariable : BaseVariable<GameEvent>
     {
-        protected override GameEvent Clone(GameEvent value)
+        protected override GameEvent DuplicateValue(GameEvent value)
         {
             return value;
         }
