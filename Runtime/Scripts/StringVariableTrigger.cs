@@ -7,16 +7,8 @@ using UnityEngine.Events;
 
 namespace Subsets.Dda
 {
-    [Serializable]
-    public class StringVariableCondition : BaseCondition<StringVariable, string>
+    public class StringVariableTrigger : BaseTrigger<StringVariableComparer, StringVariable>
     {
-        public StringCompare Compare;
-        public string Value;
-    }
-    public class StringVariableTrigger : BaseTrigger<StringVariableCondition, StringVariable, string>
-    {
-        
-
         public ResponseConditionOperator ConditionOperator;
 
         protected override bool MatchCondition()
@@ -24,29 +16,13 @@ namespace Subsets.Dda
             if (enabled)
             {
                 ConditionCompareResult result = new ConditionCompareResult();
-                foreach (StringVariableCondition condition in Conditions)
+                foreach (StringVariableComparer condition in Conditions)
                 {
-                    if (condition.Compare == StringCompare.Equal)
-                    {
-                        result.Add(condition.Target.Value.Equals(condition.Value));
-                    }
-                    else if (condition.Compare == StringCompare.Contains)
-                    {
-                        result.Add(condition.Target.Value.Contains(condition.Value));
-                    }
-                    else if (condition.Compare == StringCompare.IsNot)
-                    {
-                        result.Add(!condition.Target.Value.Equals(condition.Value));
-                    }
-                    else if (condition.Compare == StringCompare.Updated)
-                    {
-                        result.Add(true);
-                    }
+                    result.Add(condition.Match());
                 }
 
                 if (result.CheckConditionOperator(ConditionOperator))
                 {
-                    //Listeners?.Invoke();
                     return true;
                 }
             }

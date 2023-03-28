@@ -6,15 +6,9 @@ using UnityEngine.Events;
 
 namespace Subsets.Dda
 {
-    [Serializable]
-    public abstract class BaseCondition<TVariable, TType> where TVariable : BaseVariable<TType>
-    {
-        public TVariable Target;
-    }
-    
-    public abstract class BaseTrigger<TCondition, TVariable, TType>: MonoBehaviour 
-        where TVariable : BaseVariable<TType>
-        where TCondition : BaseCondition<TVariable, TType>
+    public abstract class BaseTrigger<TCondition, TVariable>: MonoBehaviour 
+        where TVariable : INotifyPropertyChanged 
+        where TCondition : BaseComparer<TVariable>
     {
         public List<TCondition> Conditions;
         public UnityEvent Listeners;
@@ -39,7 +33,7 @@ namespace Subsets.Dda
         }
         private void OnDestroy()
         {
-            foreach (BaseCondition<TVariable, TType> condition in Conditions)
+            foreach (BaseComparer<TVariable> condition in Conditions)
             {
                 condition.Target.PropertyChanged -= OnChanged;
             }

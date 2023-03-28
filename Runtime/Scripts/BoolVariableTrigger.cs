@@ -8,19 +8,19 @@ using UnityEngine.Events;
 namespace Subsets.Dda
 {
     [Serializable]
-    public class BoolVariableCondition : BaseCondition<BoolVariable, bool>
+    public class BoolVariableComparer : BaseComparer<BoolVariable>
     {
         public BoolCompare Compare;
         public string Value;
     }
-    public class BoolVariableTrigger : BaseTrigger<BoolVariableCondition, BoolVariable, bool>
+    public class BoolVariableTrigger : BaseTrigger<BoolVariableComparer, BoolVariable>
     {
         protected override bool MatchCondition()
         {
             if (enabled)
             {
                 bool matched = false;
-                foreach (BoolVariableCondition condition in Conditions)
+                foreach (BoolVariableComparer condition in Conditions)
                 {
                     if (condition.Compare == BoolCompare.IsTrue)
                     {
